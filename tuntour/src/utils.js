@@ -3,8 +3,8 @@
  * @param  {Event} event Occured event
  * @return {String}      Id of the location
  */
- export function getLocationId(event) {
-	return event.target.id;
+export function getLocationId(event) {
+  return event.target.id;
 }
 
 /**
@@ -13,7 +13,7 @@
  * @return {String}      Name of the location
  */
 export function getLocationName(event) {
-	return event.target.attributes.name.value;
+  return event.target.attributes.name.value;
 }
 
 /**
@@ -22,5 +22,5 @@ export function getLocationName(event) {
  * @return {Boolean}     Is the location selected
  */
 export function getLocationSelected(event) {
-	return event.target.attributes['aria-checked'].value === 'true';
+  return event.target.attributes["aria-checked"].value === "true";
 }
