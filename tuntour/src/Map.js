@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { getLocationName } from "./utils";
 import NavBar from "./NavBar";
 import CardPanel from "./CardPanel";
+import ModalComponent from "./Modal";
 
 import Button from "react-bulma-components";
 
@@ -21,8 +22,12 @@ export default class Map extends React.Component {
       y: 0,
       tooltipStyle: {
         display: "none",
+        
       },
+  
+      modal: false
     };
+    this.toggle = this.toggle.bind(this);
 
     this.handleLocationMouseOver = this.handleLocationMouseOver.bind(this);
     this.handleLocationMouseOut = this.handleLocationMouseOut.bind(this);
@@ -32,7 +37,11 @@ export default class Map extends React.Component {
     this._onMouseMove = this._onMouseMove.bind(this);
     this.handleLocationMouseMove = this.handleLocationMouseMove.bind(this);
   }
-
+  toggle() {
+    this.setState({
+      modal: true
+    });
+  }
   _onMouseMove(e) {
     this.setState({ x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY });
   }
@@ -42,13 +51,15 @@ export default class Map extends React.Component {
     this.setState({ pointedLocation: pointedLocation });
   }
 
-  handleLocationMouseOut() {
+  handleLocationMouseOut() { 
     this.setState({ pointedLocation: null });
   }
 
   handleLocationFocus(event) {
+    const { modal } = this.state;
     const focusedLocation = getLocationName(event);
-    this.setState({ focusedLocation: focusedLocation });
+    this.setState({ focusedLocation: focusedLocation, modal: !modal });
+
   }
 
   handleLocationBlur() {
@@ -76,6 +87,7 @@ export default class Map extends React.Component {
     return `svg-map__location svg-map__location--heat${index % 4}`;
   }
   render() {
+    const { modal } = this.state;
     var location = this.state.contextMenuLocation;
     var contentMenuStyle = {
       display: "block",
@@ -140,7 +152,6 @@ export default class Map extends React.Component {
               Selected location: {this.state.selectedLocation}
             </div>
           </div>
-          Click Me
           <div className="examples__block__map examples__block__map--australia">
             <SVGMap
               map={Tunisia}
@@ -151,8 +162,13 @@ export default class Map extends React.Component {
               onChange={this.handleOnChange}
               onLocationMouseMove={this.handleLocationMouseMove}
             />
+           
           </div>
         </article>
+        <div>
+           
+          <ModalComponent modal={modal} toggle={this.toggle}/>
+        </div>
       </div>
     );
   }
