@@ -75,8 +75,8 @@ export default class App extends React.Component {
   handleLocationMouseMove(event) {
     const tooltipStyle = {
       display: "block",
-      top: event.clientY,
-      left: event.clientX,
+      top: event.clientY ,
+      left: event.clientX - 150,
     };
     this.setState({ tooltipStyle });
   }
@@ -89,43 +89,66 @@ export default class App extends React.Component {
     var contentMenuStyle = {
       display: "block",
       position: "absolute",
-      left: this.state.x,
-      top: this.state.y,
+      left: this.state.x - 150,
+      top: this.state.y - 0,
     };
     return (
-      <article className="examples__block" onMouseMove={this._onMouseMove}>
+      <div style={{ width: "100%" }}>
         <NavBar></NavBar>
-        <h2 className="title" style={{ height: "10px", textAlign: "center" }}>
-          Tunisia SVG Interactive Map
-        </h2>
-        <div className="examples__block__info">
-          <div className="examples__block__info__item" style={contentMenuStyle}>
-            {this.state.pointedLocation ? (
-              <CardPanel
-                name={this.state.pointedLocation}
-                clickHandler={this.handleLocationFocus}
-              ></CardPanel>
-            ) : null}
+        <article
+          className="examples__block"
+          onMouseMove={this._onMouseMove}
+          style={{
+            width: "300px",
+            height: "300px",
+            color: "white",
+            align: "center",
+            padding: "1em",
+            display: "inline-block",
+            textDecoration: "none !important",
+            position: "absolute",
+
+            zIndex: "50",
+            top: "20%",
+            left: "50%",
+            margin: "-100px 0 0 -150px",
+          }}
+        >
+          <h1 className="subtitle" style={{ height: "10px", textAlign: "center" }}>
+            <strong>Tunisia SVG Interactive Map</strong>
+          </h1>
+          <div className="examples__block__info">
+            <div
+              className="examples__block__info__item"
+              style={contentMenuStyle}
+            >
+              {this.state.pointedLocation ? (
+                <CardPanel
+                  name={this.state.pointedLocation}
+                  clickHandler={this.handleLocationFocus}
+                ></CardPanel>
+              ) : null}
+            </div>
+            <div className="examples__block__info__item" style={{color: 'black'}} >
+              Focused location: {this.state.focusedLocation}
+            </div>
+            <div className="examples__block__info__item" style={{color: 'black'}}>
+              Selected location: {this.state.selectedLocation}
+            </div>
           </div>
-          <div className="examples__block__info__item">
-            Focused location: {this.state.focusedLocation}
+          <div className="examples__block__map examples__block__map--australia">
+            <SVGMap
+              map={Tunisia}
+              onLocationMouseOver={this.handleLocationMouseOver}
+              onLocationMouseOut={this.handleLocationMouseOut}
+              onLocationFocus={this.handleLocationFocus}
+              onLocationBlur={this.handleLocationBlur}
+              onChange={this.handleOnChange}
+              onLocationMouseMove={this.handleLocationMouseMove}
+            />
           </div>
-          <div className="examples__block__info__item">
-            Selected location: {this.state.selectedLocation}
-          </div>
-        </div>
-        <div className="examples__block__map examples__block__map--australia">
-          <SVGMap
-            map={Tunisia}
-            onLocationMouseOver={this.handleLocationMouseOver}
-            onLocationMouseOut={this.handleLocationMouseOut}
-            onLocationFocus={this.handleLocationFocus}
-            onLocationBlur={this.handleLocationBlur}
-            onChange={this.handleOnChange}
-            onLocationMouseMove={this.handleLocationMouseMove}
-          />
-        </div>
-      </article>
+        </article>
+      </div>
     );
   }
 }
