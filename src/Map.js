@@ -9,8 +9,7 @@ import CardPanel from "./CardPanel";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import "bulma/css/bulma.css";
 import { Heading } from "@chakra-ui/react";
-import Footer from "./Footer"
-
+import Footer from "./Footer";
 
 export default class Map extends React.Component {
   constructor(props) {
@@ -108,8 +107,9 @@ export default class Map extends React.Component {
     return (
       <div style={{ width: "100%" }}>
         <NavBar></NavBar>
-        
-        <img style={{
+
+        <img
+          style={{
             width: "200px",
             height: "200px",
             color: "white",
@@ -124,12 +124,13 @@ export default class Map extends React.Component {
             left: "15%",
             margin: "-100px 0 0 -150px",
           }}
-            src="https://www.animatedimages.org/data/media/902/animated-tunisia-flag-image-0012.gif"
-            border="0"
-            alt="animated-tunisia-flag-image-0012"
+          src="https://www.animatedimages.org/data/media/902/animated-tunisia-flag-image-0012.gif"
+          border="0"
+          alt="animated-tunisia-flag-image-0012"
         />
 
-      <img style={{
+        <img
+          style={{
             width: "200px",
             height: "200px",
             color: "white",
@@ -144,12 +145,13 @@ export default class Map extends React.Component {
             right: "4%",
             margin: "-100px 0 0 -150px",
           }}
-            src="https://www.animatedimages.org/data/media/851/animated-palestine-flag-image-0005.gif"
-            border="0"
-            alt="animated-tunisia-flag-image-0012"
+          src="https://www.animatedimages.org/data/media/851/animated-palestine-flag-image-0005.gif"
+          border="0"
+          alt="animated-tunisia-flag-image-0012"
         />
 
-        <div style={{
+        <div
+          style={{
             width: "350px",
             height: "150px",
             color: "black",
@@ -163,7 +165,11 @@ export default class Map extends React.Component {
             top: "102%",
             right: "38%",
             margin: "-100px 0 0 -150px",
-          }}> <Footer></Footer> </div> 
+          }}
+        >
+          {" "}
+          <Footer></Footer>{" "}
+        </div>
 
         <article
           className="examples__block"
@@ -187,8 +193,14 @@ export default class Map extends React.Component {
           <br></br>
 
           <Heading
-            mb={4} as="h4"
-            style={{ color:'black' , height: "5px", textAlign: "center", fontSize: "21px" }}
+            mb={4}
+            as="h4"
+            style={{
+              color: "black",
+              height: "5px",
+              textAlign: "center",
+              fontSize: "21px",
+            }}
           >
             <strong>Tunisia SVG Interactive Map</strong>
           </Heading>
@@ -264,7 +276,6 @@ export default class Map extends React.Component {
             </Modal>
           ) : null}
         </div>
-        
       </div>
     );
   }

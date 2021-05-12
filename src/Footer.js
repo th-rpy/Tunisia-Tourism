@@ -41,35 +41,28 @@ const links = [
 
 export const Footer = () => (
   <div as="footer" mt={12} textAlign="center">
-    <Stack mt={4} direction="row" spacing="12px" justify="center" >
-    <Text fontSize="md" px="1rem" className="i" color="gray.600">
-      <strong>
-        Made with Love 💜 using{" "}
-        <a href="https://reactjs.org/" rel="noreferrer" target="_blank">
-          ReactJs.
-        </a>
-        
-      </strong>
-    </Text>
+    <Stack mt={4} direction="row" spacing="12px" justify="center">
+      <Text fontSize="md" px="1rem" className="i" color="gray.600">
+        <strong>
+          Made with Love 💜 using{" "}
+          <a href="https://reactjs.org/" rel="noreferrer" target="_blank">
+            ReactJs.
+          </a>
+        </strong>
+      </Text>
     </Stack>
     <Stack as="footer" mt={12} textAlign="center">
-    <Text
-          px="1rem"
-          className="i"
-          color="gray.500"
-          fontSize="md"
-          isTruncated
-        >
-          <strong>  Thank you for support!</strong>
-          <br></br>
-        
-        </Text>
+      <Text px="1rem" className="i" color="gray.500" fontSize="md" isTruncated>
+        <strong> Thank you for support!</strong>
+        <br></br>
+      </Text>
     </Stack>
-    <Text >
-        <Stack mt={4} direction="row" spacing="12px" justify="center" >{links.map((link) => (
-        <FooterLink key={link.href} {...link} />
-      ))}</Stack>
-      
+    <Text>
+      <Stack mt={4} direction="row" spacing="12px" justify="center">
+        {links.map((link) => (
+          <FooterLink key={link.href} {...link} />
+        ))}
+      </Stack>
     </Text>
   </div>
 );
