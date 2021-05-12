@@ -105,6 +105,7 @@ export default class Map extends React.Component {
       <div style={{ width: "100%" }}>
         <NavBar></NavBar>
 
+
         <article
           className="examples__block"
           onMouseMove={this._onMouseMove}
@@ -126,7 +127,7 @@ export default class Map extends React.Component {
         >
           <h1
             className="subtitle"
-            style={{ height: "10px", textAlign: "center", fontSize: "20px" }}
+            style={{ height: "20px", textAlign: "center", fontSize: "20px" }}
           >
             <strong>Tunisia SVG Interactive Map</strong>
           </h1>

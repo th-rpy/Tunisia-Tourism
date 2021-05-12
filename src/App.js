@@ -13,14 +13,14 @@ import "react-svg-map/lib/index.css";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import Map from "./Map";
+import Map from "./Map"; 
 import Test from "./Test";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
-  }
+    this.state = {}; 
+  } 
   render() {
     return (
       <Router>
