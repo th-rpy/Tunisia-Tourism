@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React from "react";
 import Tunisia from "@svg-maps/tunisia";
 import { SVGMap } from "react-svg-map";
@@ -104,7 +105,46 @@ export default class Map extends React.Component {
     return (
       <div style={{ width: "100%" }}>
         <NavBar></NavBar>
+        
+        <img style={{
+            width: "200px",
+            height: "200px",
+            color: "white",
+            align: "center",
+            padding: "1em",
+            display: "inline-block",
+            textDecoration: "none !important",
+            position: "absolute",
 
+            zIndex: "50",
+            top: "50%",
+            left: "15%",
+            margin: "-100px 0 0 -150px",
+          }}
+            src="https://www.animatedimages.org/data/media/902/animated-tunisia-flag-image-0012.gif"
+            border="0"
+            alt="animated-tunisia-flag-image-0012"
+        />
+
+      <img style={{
+            width: "200px",
+            height: "200px",
+            color: "white",
+            align: "center",
+            padding: "1em",
+            display: "inline-block",
+            textDecoration: "none !important",
+            position: "absolute",
+
+            zIndex: "50",
+            top: "50%",
+            right: "4%",
+            margin: "-100px 0 0 -150px",
+          }}
+            src="https://www.animatedimages.org/data/media/851/animated-palestine-flag-image-0005.gif"
+            border="0"
+            alt="animated-tunisia-flag-image-0012"
+        />
 
         <article
           className="examples__block"
@@ -159,29 +199,30 @@ export default class Map extends React.Component {
         <div>
           {this.state.modal ? (
             <Modal isOpen={this.state.modal}>
-              <ModalHeader>
+              <ModalHeader
+                style={{ size: "28px", color: "green", width: "100%" }}
+              >
                 {" "}
-                Hello There! You are Welcome in {this.state.dataState}{" "}
+                Hello There! You are Welcome in {this.state.dataState} 😍✈
               </ModalHeader>
               <ModalBody>
                 <hr></hr>
-                <hr></hr>
-                <h4> Welcome Guys </h4>
                 <p>
-                  If you’re looking for amazing scenery, beautiful beaches and a
-                  dose of sunshine, then you’ll love Tunisia. But if you’d also
-                  like to add in a dash of fascinating history and delicious
-                  food, all at a reasonable cost, then Tunisia’s coast is,
-                  without doubt, the place for you. Hop in that rental car and
-                  follow this guide to squeeze in some of the best things to do
-                  in Tunisia in just a few days. !
+                  It actually Tunisia’s first tourist destination due to its
+                  fine beaches and warm waters, which are perfect for water
+                  sports.
                 </p>
-                <strong>Woohoo, you're reading to visit us</strong>
+                <img
+                  src="https://assets.wego.com/image/upload/v1611848131/country-pages/tn.jpg"
+                  alt="cfrfrfr"
+                  style={{ width: "700px", height: "275px" }}
+                />
                 <br></br>
+                <strong>Woohoo, you're reading to visit us</strong>
                 <br></br>
               </ModalBody>
               <ModalFooter>
-                <Link to="/goodbye">
+                <Link to="/state">
                   <button
                     className="button is-success"
                     style={{ position: "absolute", top: "90%", right: "40%" }}
