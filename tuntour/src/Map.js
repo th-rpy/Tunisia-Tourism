@@ -27,6 +27,7 @@ export default class Map extends React.Component {
 
       modal: false,
     };
+
     this.handleClick = this.handleClick.bind(this);
 
     this.handleLocationMouseOver = this.handleLocationMouseOver.bind(this);
@@ -37,10 +38,12 @@ export default class Map extends React.Component {
     this._onMouseMove = this._onMouseMove.bind(this);
     this.handleLocationMouseMove = this.handleLocationMouseMove.bind(this);
   }
+
   handleClick() {
     this.setState({
-      modal: false,
+      modal: !this.state.modal,
       dataState: this.state.focusedLocation,
+      focusedLocation: null,
     });
   }
   _onMouseMove(e) {
@@ -60,13 +63,14 @@ export default class Map extends React.Component {
     const { modal } = this.state;
     const focusedLocation = getLocationName(event);
     this.setState({
+      modal: !this.state.modal,
       focusedLocation: focusedLocation,
-      modal: !modal,
       dataState: focusedLocation,
     });
   }
 
   handleLocationBlur() {
+    const { modal } = this.state;
     this.setState({ focusedLocation: null });
   }
 
@@ -122,13 +126,10 @@ export default class Map extends React.Component {
         >
           <h1
             className="subtitle"
-            style={{ height: "10px", textAlign: "center" }}
+            style={{ height: "10px", textAlign: "center", fontSize: "20px" }}
           >
             <strong>Tunisia SVG Interactive Map</strong>
           </h1>
-          <Link to="/goodbye">
-            <button>Click here</button>
-          </Link>
           <div className="examples__block__info">
             <div
               className="examples__block__info__item"
@@ -140,18 +141,6 @@ export default class Map extends React.Component {
                   clickHandler={this.handleLocationFocus}
                 ></CardPanel>
               ) : null}
-            </div>
-            <div
-              className="examples__block__info__item"
-              style={{ color: "black" }}
-            >
-              Focused location: {this.state.focusedLocation}
-            </div>
-            <div
-              className="examples__block__info__item"
-              style={{ color: "black" }}
-            >
-              Selected location: {this.state.focusedLocation}
             </div>
           </div>
           <div className="examples__block__map examples__block__map--australia">
@@ -166,28 +155,45 @@ export default class Map extends React.Component {
             />
           </div>
         </article>
-        <div  >
+        <div>
           {this.state.modal ? (
-            <Modal isOpen={this.state.modal} >
-              <ModalHeader> Hello There! You are Welcome in {this.state.dataState} </ModalHeader>
+            <Modal isOpen={this.state.modal}>
+              <ModalHeader>
+                {" "}
+                Hello There! You are Welcome in {this.state.dataState}{" "}
+              </ModalHeader>
               <ModalBody>
                 <hr></hr>
-                <h4> </h4>
+                <hr></hr>
+                <h4> Welcome Guys </h4>
                 <p>
-                  Cras mattis consectetur purus sit amet fermentum. Cras justo
-                  odio, dapibus ac facilisis in, egestas eget quam. Morbi leo
-                  risus, porta ac consectetur ac, vestibulum at eros.
+                  If you’re looking for amazing scenery, beautiful beaches and a
+                  dose of sunshine, then you’ll love Tunisia. But if you’d also
+                  like to add in a dash of fascinating history and delicious
+                  food, all at a reasonable cost, then Tunisia’s coast is,
+                  without doubt, the place for you. Hop in that rental car and
+                  follow this guide to squeeze in some of the best things to do
+                  in Tunisia in just a few days. !
                 </p>
+                <strong>Woohoo, you're reading to visit us</strong>
+                <br></br>
                 <br></br>
               </ModalBody>
               <ModalFooter>
+                <Link to="/goodbye">
+                  <button
+                    className="button is-success"
+                    style={{ position: "absolute", top: "90%", right: "40%" }}
+                  >
+                    Visit {this.state.dataState}
+                  </button>
+                </Link>
+
                 <button
                   onClick={this.handleClick}
-                  className="button is-success"
+                  className="button"
+                  style={{ position: "absolute", top: "10px", right: "0px" }}
                 >
-                  Visit me
-                </button>
-                <button onClick={this.handleClick} className="button">
                   Close
                 </button>
               </ModalFooter>
