@@ -8,6 +8,9 @@ import NavBar from "./NavBar";
 import CardPanel from "./CardPanel";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import "bulma/css/bulma.css";
+import { Heading } from "@chakra-ui/react";
+import Footer from "./Footer"
+
 
 export default class Map extends React.Component {
   constructor(props) {
@@ -146,6 +149,22 @@ export default class Map extends React.Component {
             alt="animated-tunisia-flag-image-0012"
         />
 
+        <div style={{
+            width: "350px",
+            height: "150px",
+            color: "black",
+            align: "center",
+            padding: "0em",
+            display: "inline-block",
+            textDecoration: "none !important",
+            position: "absolute",
+
+            zIndex: "50",
+            top: "102%",
+            right: "38%",
+            margin: "-100px 0 0 -150px",
+          }}> <Footer></Footer> </div> 
+
         <article
           className="examples__block"
           onMouseMove={this._onMouseMove}
@@ -165,12 +184,15 @@ export default class Map extends React.Component {
             margin: "-100px 0 0 -150px",
           }}
         >
-          <h1
-            className="subtitle"
-            style={{ height: "20px", textAlign: "center", fontSize: "20px" }}
+          <br></br>
+
+          <Heading
+            mb={4} as="h4"
+            style={{ color:'black' , height: "5px", textAlign: "center", fontSize: "21px" }}
           >
             <strong>Tunisia SVG Interactive Map</strong>
-          </h1>
+          </Heading>
+          <br />
           <div className="examples__block__info">
             <div
               className="examples__block__info__item"
@@ -242,6 +264,7 @@ export default class Map extends React.Component {
             </Modal>
           ) : null}
         </div>
+        
       </div>
     );
   }
