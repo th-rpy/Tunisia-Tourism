@@ -5,9 +5,8 @@ import { Link } from "react-router-dom";
 import { getLocationName } from "./utils";
 import NavBar from "./NavBar";
 import CardPanel from "./CardPanel";
-import ModalComponent from "./Modal";
-
-import Button from "react-bulma-components";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import "bulma/css/bulma.css";
 
 export default class Map extends React.Component {
   constructor(props) {
@@ -22,12 +21,13 @@ export default class Map extends React.Component {
       y: 0,
       tooltipStyle: {
         display: "none",
-        
       },
-  
-      modal: false
+
+      dataState: "",
+
+      modal: false,
     };
-    this.toggle = this.toggle.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
     this.handleLocationMouseOver = this.handleLocationMouseOver.bind(this);
     this.handleLocationMouseOut = this.handleLocationMouseOut.bind(this);
@@ -37,9 +37,10 @@ export default class Map extends React.Component {
     this._onMouseMove = this._onMouseMove.bind(this);
     this.handleLocationMouseMove = this.handleLocationMouseMove.bind(this);
   }
-  toggle() {
+  handleClick() {
     this.setState({
-      modal: true
+      modal: false,
+      dataState: this.state.focusedLocation,
     });
   }
   _onMouseMove(e) {
@@ -51,15 +52,18 @@ export default class Map extends React.Component {
     this.setState({ pointedLocation: pointedLocation });
   }
 
-  handleLocationMouseOut() { 
+  handleLocationMouseOut() {
     this.setState({ pointedLocation: null });
   }
 
   handleLocationFocus(event) {
     const { modal } = this.state;
     const focusedLocation = getLocationName(event);
-    this.setState({ focusedLocation: focusedLocation, modal: !modal });
-
+    this.setState({
+      focusedLocation: focusedLocation,
+      modal: !modal,
+      dataState: focusedLocation,
+    });
   }
 
   handleLocationBlur() {
@@ -87,8 +91,6 @@ export default class Map extends React.Component {
     return `svg-map__location svg-map__location--heat${index % 4}`;
   }
   render() {
-    const { modal } = this.state;
-    var location = this.state.contextMenuLocation;
     var contentMenuStyle = {
       display: "block",
       position: "absolute",
@@ -149,7 +151,7 @@ export default class Map extends React.Component {
               className="examples__block__info__item"
               style={{ color: "black" }}
             >
-              Selected location: {this.state.selectedLocation}
+              Selected location: {this.state.focusedLocation}
             </div>
           </div>
           <div className="examples__block__map examples__block__map--australia">
@@ -162,12 +164,35 @@ export default class Map extends React.Component {
               onChange={this.handleOnChange}
               onLocationMouseMove={this.handleLocationMouseMove}
             />
-           
           </div>
         </article>
-        <div>
-           
-          <ModalComponent modal={modal} toggle={this.toggle}/>
+        <div  >
+          {this.state.modal ? (
+            <Modal isOpen={this.state.modal} >
+              <ModalHeader> Hello There! You are Welcome in {this.state.dataState} </ModalHeader>
+              <ModalBody>
+                <hr></hr>
+                <h4> </h4>
+                <p>
+                  Cras mattis consectetur purus sit amet fermentum. Cras justo
+                  odio, dapibus ac facilisis in, egestas eget quam. Morbi leo
+                  risus, porta ac consectetur ac, vestibulum at eros.
+                </p>
+                <br></br>
+              </ModalBody>
+              <ModalFooter>
+                <button
+                  onClick={this.handleClick}
+                  className="button is-success"
+                >
+                  Visit me
+                </button>
+                <button onClick={this.handleClick} className="button">
+                  Close
+                </button>
+              </ModalFooter>
+            </Modal>
+          ) : null}
         </div>
       </div>
     );
