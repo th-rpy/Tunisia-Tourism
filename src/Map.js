@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { getLocationName } from "./utils";
 import NavBar from "./NavBar";
 import CardPanel from "./CardPanel";
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import "bulma/css/bulma.css";
 import { Heading } from "@chakra-ui/react";
 import Footer from "./Footer";
@@ -63,7 +63,6 @@ export default class Map extends React.Component {
   }
 
   handleLocationFocus(event) {
-    const { modal } = this.state;
     const focusedLocation = getLocationName(event);
     this.setState({
       modal: !this.state.modal,
@@ -73,7 +72,6 @@ export default class Map extends React.Component {
   }
 
   handleLocationBlur() {
-    const { modal } = this.state;
     this.setState({ focusedLocation: null });
   }
 

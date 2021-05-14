@@ -25,8 +25,9 @@ export default class State extends React.Component {
   }
 
   render() {
-    const {  location,  } = this.props
-    var images = this.state.images.map((i) => {
+    const {  location,  } = this.props;
+    const imgs = this.state.images[location.state.dataState]
+    let images = imgs.map((i) => {
       i.customOverlay = (
         <div style={captionStyle}>
           <div>{i.caption}</div>
