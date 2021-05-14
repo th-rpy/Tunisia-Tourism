@@ -46,7 +46,7 @@ export default class Map extends React.Component {
     this.setState({
       modal: !this.state.modal,
       dataState: this.state.focusedLocation,
-      focusedLocation: null,
+      
     });
   }
   _onMouseMove(e) {
@@ -256,7 +256,7 @@ export default class Map extends React.Component {
                 <br></br>
               </ModalBody>
               <ModalFooter>
-                <Link to="/state">
+                <Link to={{pathname :"/state", state:this.state}}>
                   <button
                     className="button is-success"
                     style={{ position: "absolute", top: "90%", right: "40%" }}

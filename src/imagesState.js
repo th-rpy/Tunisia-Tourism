@@ -1,109 +1,5 @@
-import PropTypes from "prop-types";
-import React from "react";
-import Gallery from "react-grid-gallery";
-import { Link } from "react-router-dom";
-import "bulma/css/bulma.css";
-
-export default class Test extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      images: this.props.images,
-    };
-  }
-
-  setCustomTags(i) {
-    return i.tags.map((t) => {
-      return (
-        <div key={t.value} style={customTagStyle}>
-          {t.title}
-        </div>
-      );
-    });
-  }
-
-  render() {
-    var images = this.state.images.map((i) => {
-      i.customOverlay = (
-        <div style={captionStyle}>
-          <div>{i.caption}</div>
-          {i.hasOwnProperty("tags") && this.setCustomTags(i)}
-        </div>
-      );
-      return i;
-    });
-
-    return (
-      <div>
-        <Link to="/">
-          <button
-            className="button is-success"
-            style={{ position: "absolute", top: "90%", right: "45%" }}
-          >
-            Back To Map
-          </button>
-        </Link>
-        <div
-          style={{
-            display: "block",
-            minHeight: "80px",
-            width: "100%",
-            height: "100%",
-            border: "1px solid #ddd",
-            overflow: "auto",
-          }}
-        >
-          <br></br> <br></br>
-          <Gallery images={images} enableImageSelection={false} />
-        </div>
-      </div>
-    );
-  }
-}
-
-Test.propTypes = {
-  images: PropTypes.arrayOf(
-    PropTypes.shape({
-      src: PropTypes.string.isRequired,
-      thumbnail: PropTypes.string.isRequired,
-      srcset: PropTypes.array,
-      caption: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-      thumbnailWidth: PropTypes.number.isRequired,
-      thumbnailHeight: PropTypes.number.isRequired,
-    })
-  ).isRequired,
-};
-
-const captionStyle = {
-  backgroundColor: "rgba(0, 0, 0, 0.8)",
-  maxHeight: "240px",
-  overflow: "hidden",
-  position: "absolute",
-  bottom: "0",
-  width: "100%",
-  color: "white",
-  padding: "2px",
-  fontSize: "90%",
-};
-
-const customTagStyle = {
-  wordWrap: "break-word",
-  display: "inline-block",
-  backgroundColor: "white",
-  height: "auto",
-  fontSize: "75%",
-  fontWeight: "600",
-  lineHeight: "1",
-  padding: ".2em .6em .3em",
-  borderRadius: ".25em",
-  color: "black",
-  verticalAlign: "baseline",
-  margin: "2px",
-};
-
-Test.defaultProps = {
-  images: [
-    {
+const images = {
+    "Sfax 1": [{
       src:
         "https://assets.wego.com/image/upload/v1611848131/country-pages/tn.jpg",
       thumbnail:
@@ -125,8 +21,8 @@ Test.defaultProps = {
         { value: "Industrial", title: "Industrial" },
       ],
       caption: "286H (gratisography.com)",
-    },
-    {
+    }],
+    "Sfax 2":[{
       src:
         "https://lp-cms-production.imgix.net/features/2018/08/raf-raf-peninsula-tunisia-af47e253734c.jpg?auto=format&fit=crop&sharp=10&vib=20&ixlib=react-8.6.4&w=850&q=75&dpr=1",
       thumbnail:
@@ -148,7 +44,8 @@ Test.defaultProps = {
       thumbnailWidth: 1000,
       thumbnailHeight: 600,
       caption: "The Berber town of Zriba was abandoned in the 1960s",
-    },
+    }],
+    "Sousse":[
     {
       src:
         "https://lp-cms-production.imgix.net/features/2018/08/sidi-bou-said-harbour-tunisia-27ce685bbaa0.jpg?auto=format&fit=crop&sharp=10&vib=20&ixlib=react-8.6.4&w=850&q=75&dpr=1",
@@ -171,7 +68,8 @@ Test.defaultProps = {
         { value: "Industrial", title: "Industrial" },
       ],
       caption: "The sprawling and often empty ruins of Dougga ",
-    },
+    }],
+    "Monastir":[
     {
       src:
         "https://cdn-bodde.nitrocdn.com/PgnkCIsGyOJiNkMdDOHEAiCvMEeINUsu/assets/static/source/rev-93acb20/wp-content/uploads/2014/02/Chebika-Tunisia.jpg",
@@ -191,7 +89,8 @@ Test.defaultProps = {
       tags: [{ value: "Nature", title: "Nature | Flowers" }],
       caption:
         "Hammamet – a small fishing town turned beautiful coastal resort",
-    },
+    }],
+    "Tunis 1":[
     {
       src:
         "https://cdn-bodde.nitrocdn.com/PgnkCIsGyOJiNkMdDOHEAiCvMEeINUsu/assets/static/source/rev-93acb20/wp-content/uploads/2014/02/Monastir-Ribat.jpg",
@@ -212,7 +111,8 @@ Test.defaultProps = {
       tags: [{ value: "Nature", title: "Nature | Flowers" }],
       caption:
         "Matmata & the Ksour – a unique desert village with curious honeycomb-like houses",
-    },
+    }],
+    "Tunis 2":[
     {
       src:
         "https://cdn-bodde.nitrocdn.com/PgnkCIsGyOJiNkMdDOHEAiCvMEeINUsu/assets/static/source/rev-93acb20/wp-content/uploads/2014/02/Sousse-1-1536x1014.jpg",
@@ -235,11 +135,64 @@ Test.defaultProps = {
       tags: [{ value: "Nature", title: "Nature | Flowers" }],
       caption:
         "Plage de Chaffar (Sfax) – a Mediterranean sandy beach resort popular with both tourists and locals",
-    },
-  ],
-};
+    }],
+}
 
-// Don't forget to include the css in your page
+  const captionStyle = {
+    backgroundColor: "rgba(0, 0, 0, 0.8)",
+    maxHeight: "240px",
+    overflow: "hidden",
+    position: "absolute",
+    bottom: "0",
+    width: "100%",
+    color: "white",
+    padding: "2px",
+    fontSize: "90%",
+  };
+  
+  const customTagStyle = {
+    wordWrap: "break-word",
+    display: "inline-block",
+    backgroundColor: "white",
+    height: "auto",
+    fontSize: "75%",
+    fontWeight: "600",
+    lineHeight: "1",
+    padding: ".2em .6em .3em",
+    borderRadius: ".25em",
+    color: "black",
+    verticalAlign: "baseline",
+    margin: "2px",
+  };
 
-// Using webpack or parcel with a style loader
-// import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
+  const States = {
+    "Tunis 1": 1056,
+    "Tunis 2": 1056,
+    "Sfax 1": 955,
+    "Sfax 2": 955,
+    "Nabeul 1": 787,
+    "Nabeul 2": 787,
+    Sousse: 675,
+    "Ben Arous": 631,
+    Ariana: 576,
+    Kairouan: 570,
+    Bizerte: 568,
+    Monastir: 548,
+    Mednine: 479,
+    Kasserine: 439,
+    "Sidi Bouzid": 429,
+    Mahdia: 410,
+    Jendouba: 401,
+    Manouba: 379,
+    Gabès: 374,
+    Gafsa: 337,
+    Beja: 303,
+    Kef: 243,
+    Siliana: 223,
+    Zaghouan: 176,
+    Kebili: 157,
+    Tataouine: 149,
+    Tozeur: 107,
+  };
+
+  module.exports = {images, captionStyle, customTagStyle , States}

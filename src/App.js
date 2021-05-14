@@ -1,11 +1,8 @@
-import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
 import ReactDOM from "react-dom";
-import { RadioSVGMap } from "react-svg-map";
 import "bulma/css/bulma.css";
 
-import { Icon } from "react-materialize";
 import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize.min.js";
 
@@ -14,7 +11,7 @@ import "react-svg-map/lib/index.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Map from "./Map";
-import Test from "./Test";
+import Test from "./State";
 
 class App extends React.Component {
   constructor(props) {
