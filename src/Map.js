@@ -10,6 +10,16 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import "bulma/css/bulma.css";
 import { Heading } from "@chakra-ui/react";
 import Footer from "./Footer";
+import {
+  MDBCard,
+  MDBCardBody,
+  MDBCardImage,
+  MDBCardTitle,
+  MDBCardText,
+  MDBRow,
+  MDBCol,
+  MDBIcon,
+} from "mdbreact";
 
 export default class Map extends React.Component {
   constructor(props) {
@@ -46,7 +56,6 @@ export default class Map extends React.Component {
     this.setState({
       modal: !this.state.modal,
       dataState: this.state.focusedLocation,
-      
     });
   }
   _onMouseMove(e) {
@@ -254,7 +263,7 @@ export default class Map extends React.Component {
                 <br></br>
               </ModalBody>
               <ModalFooter>
-                <Link to={{pathname :"/state", state:this.state}}>
+                <Link to={{ pathname: "/state", state: this.state }}>
                   <button
                     className="button is-success"
                     style={{ position: "absolute", top: "90%", right: "40%" }}

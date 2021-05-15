@@ -2,9 +2,8 @@ import PropTypes from "prop-types";
 import React from "react";
 import Gallery from "react-grid-gallery";
 import "bulma/css/bulma.css";
-import {images, captionStyle, customTagStyle } from "./imagesState"
-import {Link} from "react-router-dom";
-
+import { images, captionStyle, customTagStyle } from "./imagesState";
+import { Link } from "react-router-dom";
 
 export default class State extends React.Component {
   constructor(props) {
@@ -25,8 +24,8 @@ export default class State extends React.Component {
   }
 
   render() {
-    const {  location,  } = this.props;
-    const imgs = this.state.images[location.state.dataState]
+    const { location } = this.props;
+    const imgs = this.state.images[location.state.dataState];
     let images = imgs.map((i) => {
       i.customOverlay = (
         <div style={captionStyle}>
@@ -42,22 +41,46 @@ export default class State extends React.Component {
         <Link to="/">
           <button
             className="button is-success"
-            style={{ position: "absolute", top: "90%", right: "45%" }}
+            style={{ position: "absolute", top: "90%", right: "50%" }}
           >
             Back To Map
+          </button>
+          <strong style={{ position: "absolute", top: "91%", right: "44%" }}>
+            {" "}
+            Or{" "}
+          </strong>
+          <button
+            className="button is-success"
+            style={{ position: "absolute", top: "90%", right: "32%" }}
+          >
+            Book Hotels
           </button>
         </Link>
         <div
           style={{
             display: "block",
-            minHeight: "80px",
+            minHeight: "1200px",
             width: "100%",
             height: "100%",
             border: "1px solid #ddd",
             overflow: "auto",
           }}
         >
-          <br></br> {location.state.dataState} <br></br>
+          <br></br>{" "}
+          <h1
+            style={{
+              display: "block",
+              position: "absolute",
+              bottom: "87%",
+              right: "40%",
+            }}
+          >
+            I <span style={{ color: "red" }}> ❤ </span>{" "}
+            {location.state.dataState}{" "}
+          </h1>{" "}
+          <br></br>
+          <br></br>
+          <br></br>
           <Gallery images={images} enableImageSelection={false} />
         </div>
       </div>
@@ -79,7 +102,7 @@ State.propTypes = {
 };
 
 State.defaultProps = {
-  images: images
+  images: images,
 };
 
 // Don't forget to include the css in your page

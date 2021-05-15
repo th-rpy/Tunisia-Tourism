@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Map from "./Map";
 import Test from "./State";
+import Visitme from "./Visitme";
 
 class App extends React.Component {
   constructor(props) {
@@ -21,6 +22,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
+        <Route exact path="/Visit" component={Visitme} />
         <Route exact path="/" component={Map} />
         <Route path="/state" component={Test} />
       </Router>

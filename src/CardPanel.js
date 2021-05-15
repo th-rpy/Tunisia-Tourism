@@ -2,7 +2,7 @@ import React from "react";
 
 import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize.min.js";
-import {States} from "./imagesState"
+import { States } from "./imagesState";
 
 class CardPanel extends React.Component {
   constructor(props) {
