@@ -1,5 +1,9 @@
-import React from "react";
+import React, { useState } from 'react';
 import { Link } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+ 
+
 
 import {
   Input,
@@ -30,6 +34,24 @@ import InternalStateEx from "./PopOver";
 
 function Visitme(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const {Guests, setGuests} = useState("")
+  const {Rooms, setRooms} = useState("")
+
+   // define check-in and check-out state
+   const [checkInDate, setCheckInDate] = useState(new Date());
+   const [checkOutDate, setCheckOutDate] = useState(null);
+ 
+   // define handler change function on check-in date
+   const handleCheckInDate = (date) => {
+     setCheckInDate(date);
+     setCheckOutDate(null);
+   };
+ 
+   // define handler change function on check-out date
+   const handleCheckOutDate = (date) => {
+     setCheckOutDate(date);
+   };
 
   const initialRef = React.useRef();
   const finalRef = React.useRef();
@@ -82,11 +104,20 @@ function Visitme(props) {
           <ModalBody pb={6}>
             <FormControl mt={4}>
               <FormLabel>Check In</FormLabel>
-              <Input type="date" placeholder="Last name" />
+              <DatePicker 
+      selected={checkInDate} 
+      minDate={new Date()}
+      onChange={handleCheckInDate} 
+    />
             </FormControl>
             <FormControl mt={4}>
               <FormLabel>Check Out</FormLabel>
-              <Input type="date" placeholder="Last name" />
+              <DatePicker
+              
+            selected={!checkOutDate? checkInDate: checkOutDate}
+            minDate={checkInDate}
+            onChange={handleCheckOutDate}
+          />
             </FormControl>
             <FormControl mt={5}>
               <FormLabel>Guests</FormLabel>
