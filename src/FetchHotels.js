@@ -1,8 +1,7 @@
 import React from "react";
 import moment from "moment";
 
-import { Card, CardColumns, CardDeck, CardGroup } from "react-bootstrap";
-
+import { Card, CardColumns, CardDeck, CardGroup, Button } from "react-bootstrap";
 
 class Booking extends React.Component {
   constructor(props) {
@@ -20,49 +19,49 @@ class Booking extends React.Component {
           {location.state.Guests} guests in {location.state.Rooms} rooms.
         </p>
 
-        <CardDeck >
-          <Card style={{ width: '30%' , position: 'realtive' , left: '5%'}}>
-            <Card.Img variant="top" src="holder.js/100px160" />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            position: "relative",
+            left:"15%"
+            
+          }}
+        >
+          <Card style={{  position: "realtive", left: "5%", width: "900px", height: "240px", cursor: "pointer"}}>
+            <Card.Img
+              variant="right"
+              style = {{width:"300px", height:"240px"}}
+              src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/1f/e0/a6/exterior-view.jpg?w=1300&h=-1&s=1"
+            />
             <Card.Body>
-              <Card.Title>Card title</Card.Title>
-              <Card.Text>
+              <Card.Title style = {{position: 'absolute', left:"35%", bottom:"85%", color:'blue'}}>Card title</Card.Title>
+              <Card.Text style = {{position: 'absolute', left:"35%", bottom:"65%"}}>
+                This is a wider card with supporting text below as a natural
+                lead-in to additional content. This content is a little bit
+                longer. <Button> View Deal</Button>
+              </Card.Text>
+              
+            </Card.Body>
+            
+          </Card>
+          <Card style={{  position: "realtive", left: "5%", width: "900px", height: "240px", cursor: "pointer"}}>
+            <Card.Img
+              variant="right"
+              style = {{width:"300px", height:"240px"}}
+              src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/a0/18/31/exterior-view.jpg?w=1300&h=-1&s=1"
+            />
+            <Card.Body>
+              <Card.Title style = {{position: 'absolute', left:"35%", bottom:"85%", color:'blue'}}>Card title</Card.Title>
+              <Card.Text style = {{position: 'absolute', left:"35%", bottom:"65%"}}>
                 This is a wider card with supporting text below as a natural
                 lead-in to additional content. This content is a little bit
                 longer.
               </Card.Text>
             </Card.Body>
-            <Card.Footer>
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </Card.Footer>
+            
           </Card>
-          <Card style ={{ width: '30%' , position: 'realtive' , left: '5%'}}>
-            <Card.Img variant="top" src="holder.js/100px160" />
-            <Card.Body>
-              <Card.Title>Card title</Card.Title>
-              <Card.Text>
-                This card has supporting text below as a natural lead-in to
-                additional content.{" "}
-              </Card.Text>
-            </Card.Body>
-            <Card.Footer>
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </Card.Footer>
-          </Card>
-          <Card>
-            <Card.Img variant="top" src="holder.js/100px160" />
-            <Card.Body>
-              <Card.Title>Card title</Card.Title>
-              <Card.Text>
-                This is a wider card with supporting text below as a natural
-                lead-in to additional content. This card has even longer content
-                than the first to show that equal height action.
-              </Card.Text>
-            </Card.Body>
-            <Card.Footer>
-              <small className="text-muted">Last updated 3 mins ago</small>
-            </Card.Footer>
-          </Card>
-        </CardDeck>
+        </div>
       </div>
     );
   }
