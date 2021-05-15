@@ -10,16 +10,6 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import "bulma/css/bulma.css";
 import { Heading } from "@chakra-ui/react";
 import Footer from "./Footer";
-import {
-  MDBCard,
-  MDBCardBody,
-  MDBCardImage,
-  MDBCardTitle,
-  MDBCardText,
-  MDBRow,
-  MDBCol,
-  MDBIcon,
-} from "mdbreact";
 
 export default class Map extends React.Component {
   constructor(props) {

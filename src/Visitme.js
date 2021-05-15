@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
- 
-
 
 import {
   Input,
@@ -30,28 +28,38 @@ import {
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
-import InternalStateEx from "./PopOver";
+import Booking from "./FetchHotels";
 
 function Visitme(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const {Guests, setGuests} = useState("")
-  const {Rooms, setRooms} = useState("")
+  const [Guests, setGuests] = useState(1);
+  const [Rooms, setRooms] = useState(1);
 
-   // define check-in and check-out state
-   const [checkInDate, setCheckInDate] = useState(new Date());
-   const [checkOutDate, setCheckOutDate] = useState(null);
- 
-   // define handler change function on check-in date
-   const handleCheckInDate = (date) => {
-     setCheckInDate(date);
-     setCheckOutDate(null);
-   };
- 
-   // define handler change function on check-out date
-   const handleCheckOutDate = (date) => {
-     setCheckOutDate(date);
-   };
+  //handle Rooms number changes
+  const handleRooms = (room) => {
+    setRooms(room);
+  };
+
+  //handle Guests number changes
+  const handleGuests = (guest) => {
+    setGuests(guest);
+  };
+
+  // define check-in and check-out state
+  const [checkInDate, setCheckInDate] = useState(new Date());
+  const [checkOutDate, setCheckOutDate] = useState(new Date());
+
+  // define handler change function on check-in date
+  const handleCheckInDate = (date) => {
+    setCheckInDate(date);
+    setCheckOutDate(null);
+  };
+
+  // define handler change function on check-out date
+  const handleCheckOutDate = (date) => {
+    setCheckOutDate(date);
+  };
 
   const initialRef = React.useRef();
   const finalRef = React.useRef();
@@ -104,24 +112,28 @@ function Visitme(props) {
           <ModalBody pb={6}>
             <FormControl mt={4}>
               <FormLabel>Check In</FormLabel>
-              <DatePicker 
-      selected={checkInDate} 
-      minDate={new Date()}
-      onChange={handleCheckInDate} 
-    />
+              <DatePicker
+                selected={checkInDate}
+                minDate={new Date()}
+                onChange={handleCheckInDate}
+              />
             </FormControl>
             <FormControl mt={4}>
               <FormLabel>Check Out</FormLabel>
               <DatePicker
-              
-            selected={!checkOutDate? checkInDate: checkOutDate}
-            minDate={checkInDate}
-            onChange={handleCheckOutDate}
-          />
+                selected={!checkOutDate ? checkInDate : checkOutDate}
+                minDate={checkInDate}
+                onChange={handleCheckOutDate}
+              />
             </FormControl>
             <FormControl mt={5}>
               <FormLabel>Guests</FormLabel>
-              <NumberInput size="sm" defaultValue={1} min={0}>
+              <NumberInput
+                size="sm"
+                onChange={handleGuests}
+                value={Guests}
+                style={{ width: "50%" }}
+              >
                 <NumberInputField focusBorderColor="red.200" />
                 <NumberInputStepper>
                   <NumberIncrementStepper
@@ -139,7 +151,12 @@ function Visitme(props) {
             </FormControl>
             <FormControl mt={5}>
               <FormLabel>Rooms</FormLabel>
-              <NumberInput size="sm" defaultValue={1} min={0}>
+              <NumberInput
+                size="sm"
+                onChange={handleRooms}
+                value={Rooms}
+                style={{ width: "50%" }}
+              >
                 <NumberInputField focusBorderColor="red.200" />
                 <NumberInputStepper>
                   <NumberIncrementStepper
@@ -158,10 +175,15 @@ function Visitme(props) {
           </ModalBody>
 
           <ModalFooter>
-            <Link to="/">
-            <Button colorScheme="blue" mr={3}>
-              Save
-            </Button>
+            <Link
+              to={{
+                pathname: "/booking",
+                state: { checkInDate, checkOutDate, Guests, Rooms },
+              }}
+            >
+              <Button colorScheme="blue" mr={3}>
+                Save
+              </Button>
             </Link>
             <Button onClick={onClose}>Cancel</Button>
           </ModalFooter>
