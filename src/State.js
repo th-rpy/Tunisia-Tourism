@@ -3,7 +3,6 @@ import React from "react";
 import Gallery from "react-grid-gallery";
 import "bulma/css/bulma.css";
 import { images, captionStyle, customTagStyle } from "./imagesState";
-import { Link } from "react-router-dom";
 import Visitme from "./Visitme";
 
 export default class State extends React.Component {

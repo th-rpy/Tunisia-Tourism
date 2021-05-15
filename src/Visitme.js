@@ -4,17 +4,14 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 import {
-  Input,
   Button,
   FormControl,
   FormLabel,
-  Select,
   NumberInput,
   NumberInputField,
   NumberInputStepper,
   NumberIncrementStepper,
   NumberDecrementStepper,
-  Stack,
 } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/react";
 import {
@@ -28,7 +25,6 @@ import {
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
-import Booking from "./FetchHotels";
 
 function Visitme(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
