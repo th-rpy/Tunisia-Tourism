@@ -4,20 +4,20 @@ import Gallery from "react-grid-gallery";
 import "bulma/css/bulma.css";
 import { images, captionStyle, customTagStyle } from "./imagesState";
 import { Link } from "react-router-dom";
-import Visitme from "./Visitme"
+import Visitme from "./Visitme";
 
 export default class State extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       images: this.props.images,
-      disabled: false
+      disabled: false,
     };
     this.handleBookingButton = this.handleBookingButton.bind(this);
   }
 
-  handleBookingButton(){
-    this.setState({disabled:true});
+  handleBookingButton() {
+    this.setState({ disabled: true });
   }
 
   setCustomTags(i) {
@@ -45,7 +45,8 @@ export default class State extends React.Component {
 
     return (
       <div>
-        <Visitme></Visitme>
+        <Visitme dataState={location.state.dataState}></Visitme>
+
         <div
           style={{
             display: "block",
@@ -56,20 +57,9 @@ export default class State extends React.Component {
             overflow: "auto",
           }}
         >
-          <br></br>{" "}
-          <h1
-            style={{
-              display: "block",
-              position: "absolute",
-              bottom: "87%",
-              right: "40%",
-            }}
-          >
-            I <span style={{ color: "red" }}> ❤ </span>{" "}
-            {location.state.dataState}{" "}
-          </h1>{" "}
           <br></br>
           <br></br>
+
           <br></br>
           <Gallery images={images} enableImageSelection={false} />
         </div>
