@@ -15,6 +15,7 @@ class Booking extends React.Component {
       hotels: [],
       restos: [],
       places:[],
+      arr: ['Hotels:15%', 'Restaurants:50%', 'Places:85%'],
       error: null,
     };
   }
@@ -66,10 +67,10 @@ class Booking extends React.Component {
       location.state.gov.replace(/[0-9]/g, "") +
       "&limit=30&offset=0&units=km&location_id=1&currency=USD&sort=relevance&lang=en_US";
     fetch(url, {
-      method: "GET",
-      headers: {
-        "x-rapidapi-key": "80931fe5ddmsh53d7fcecf915bb4p18ea7bjsna3109b19b574",
-        "x-rapidapi-host": "travel-advisor.p.rapidapi.com",
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-key": "01f0719166mshaa22357b3c03f5bp195790jsnd4fcb6a1277b",
+        "x-rapidapi-host": "travel-advisor.p.rapidapi.com"
       },
     })
       .then((response) => response.json())
@@ -95,7 +96,7 @@ class Booking extends React.Component {
           {location.state.Guests} guests in {location.state.Rooms} rooms.
           
         </Header>
-        You can choose : {['Hotels:15%', 'Restaurants:50%', 'Places:85%'].map(i =>(<div style={{
+        You can choose : {this.state.arr.map(i =>(<div style={{
             display: "flex",
             flexDirection: "column",
             position: "absolute",
