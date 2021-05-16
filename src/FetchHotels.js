@@ -174,7 +174,7 @@ class Booking extends React.Component {
                 <large className="text-muted">
                   <strong>Address 💌 : </strong>{" "}
                   {i.result_object.address == undefined
-                    ? "Sfax - Tunisia"
+                    ? location.state.gov.replace(/[0-9]/g, "")+' -Tunisia'
                     : i.result_object.address}
                 </large>
               </Card.Footer>
