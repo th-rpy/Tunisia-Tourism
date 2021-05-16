@@ -32,7 +32,7 @@ function Visitme(props) {
 
   const [Guests, setGuests] = useState(1);
   const [Rooms, setRooms] = useState(1);
-  const [gov, setGov] = useState(props.dataState)
+  const [gov, setGov] = useState(props.dataState);
 
   //handle Rooms number changes
   const handleRooms = (room) => {
@@ -64,7 +64,7 @@ function Visitme(props) {
 
   return (
     <ChakraProvider>
-        <NavBar></NavBar>
+      <NavBar></NavBar>
       <Text
         style={{ position: "absolute", bottom: "90%", right: "46%" }}
         fontSize="20px"
@@ -73,7 +73,8 @@ function Visitme(props) {
       >
         <strong>
           {" "}
-          I <span style={{ color: "red" }}> ❤ </span> {props.dataState.replace(/[0-9]/g, '')}{" "}
+          I <span style={{ color: "red" }}> ❤ </span>{" "}
+          {props.dataState.replace(/[0-9]/g, "")}{" "}
         </strong>
       </Text>{" "}
       <Link to="/">
@@ -82,7 +83,7 @@ function Visitme(props) {
           ref={finalRef}
           colorScheme="teal"
           variant="solid"
-          style={{ position: "absolute", bottom: "90%", right: "54%" }}
+          style={{ position: "absolute", bottom: "90%", right: "58%" }}
         >
           Back To Map
         </Button>

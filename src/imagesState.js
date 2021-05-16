@@ -1,364 +1,278 @@
+const arrImgs = [
+  {
+    src: "https://wallpapercave.com/wp/wp2030689.jpg",
+    thumbnail: "https://wallpapercave.com/wp/wp2030689.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src: "https://wallpapercave.com/wp/wp2030696.jpg",
+    thumbnail: "https://wallpapercave.com/wp/wp2030696.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src: "https://wallpapercave.com/wp/wp2030710.jpg",
+    thumbnail: "https://wallpapercave.com/wp/wp2030710.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src: "https://wallpapercave.com/wp/wp2030759.jpg",
+    thumbnail: "https://wallpapercave.com/wp/wp2030759.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src: "https://wallpapercave.com/wp/wp2030762.jpg",
+    thumbnail: "https://wallpapercave.com/wp/wp2030762.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src:
+      "https://tickettoadventures.files.wordpress.com/2018/05/fotor_152283390628396.jpg",
+    thumbnail:
+      "https://tickettoadventures.files.wordpress.com/2018/05/fotor_152283390628396.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src: "https://wallpapercave.com/wp/wp2030764.jpg",
+    thumbnail: "https://wallpapercave.com/wp/wp2030764.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src:
+      "https://tickettoadventures.files.wordpress.com/2018/05/fotor_152234256288838.jpg",
+    thumbnail:
+      "https://tickettoadventures.files.wordpress.com/2018/05/fotor_152234256288838.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src:
+      "https://tickettoadventures.files.wordpress.com/2018/05/fotor_152313369167964.jpg",
+    thumbnail:
+      "https://tickettoadventures.files.wordpress.com/2018/05/fotor_152313369167964.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src:
+      "https://tickettoadventures.files.wordpress.com/2018/05/fotor_1523998138339661.jpg",
+    thumbnail:
+      "https://tickettoadventures.files.wordpress.com/2018/05/fotor_1523998138339661.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src:
+      "https://tickettoadventures.files.wordpress.com/2018/05/fotor_152239984665123.jpg",
+    thumbnail:
+      "https://tickettoadventures.files.wordpress.com/2018/05/fotor_152239984665123.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src:
+      "https://www.planetware.com/wpimages/2020/02/tunisia-in-pictures-beautiful-places-to-photograph-amphitheatre-el-djem.jpg",
+    thumbnail:
+      "https://www.planetware.com/wpimages/2020/02/tunisia-in-pictures-beautiful-places-to-photograph-amphitheatre-el-djem.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src:
+      "https://www.planetware.com/wpimages/2020/02/tunisia-in-pictures-beautiful-places-to-photograph-sidi-bou-said.jpg",
+    thumbnail:
+      "https://www.planetware.com/wpimages/2020/02/tunisia-in-pictures-beautiful-places-to-photograph-sidi-bou-said.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src:
+      "https://www.planetware.com/wpimages/2020/02/tunisia-in-pictures-beautiful-places-to-photograph-matmata-caves.jpg",
+    thumbnail:
+      "https://www.planetware.com/wpimages/2020/02/tunisia-in-pictures-beautiful-places-to-photograph-matmata-caves.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src:
+      "https://www.planetware.com/wpimages/2020/02/tunisia-in-pictures-beautiful-places-to-photograph-djebel-ressas-mountains.jpg",
+    thumbnail:
+      "https://www.planetware.com/wpimages/2020/02/tunisia-in-pictures-beautiful-places-to-photograph-djebel-ressas-mountains.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src:
+      "https://www.planetware.com/wpimages/2020/02/tunisia-in-pictures-beautiful-places-to-photograph-bulla-regia.jpg",
+    thumbnail:
+      "https://www.planetware.com/wpimages/2020/02/tunisia-in-pictures-beautiful-places-to-photograph-bulla-regia.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src:
+      "https://www.planetware.com/wpimages/2020/02/tunisia-in-pictures-beautiful-places-to-photograph-djerba-island.jpg",
+    thumbnail:
+      "https://www.planetware.com/wpimages/2020/02/tunisia-in-pictures-beautiful-places-to-photograph-djerba-island.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src:
+      "https://www.planetware.com/wpimages/2020/02/tunisia-in-pictures-beautiful-places-to-photograph-the-water-temple.jpg",
+    thumbnail:
+      "https://www.planetware.com/wpimages/2020/02/tunisia-in-pictures-beautiful-places-to-photograph-the-water-temple.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src:
+      "https://www.planetware.com/wpimages/2020/02/tunisia-in-pictures-beautiful-places-to-photograph-ksar-ouled-soltane.jpg",
+    thumbnail:
+      "https://www.planetware.com/wpimages/2020/02/tunisia-in-pictures-beautiful-places-to-photograph-ksar-ouled-soltane.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src:
+      "https://www.planetware.com/wpimages/2020/02/tunisia-in-pictures-beautiful-places-to-photograph-cape-angela.jpg",
+    thumbnail:
+      "https://www.planetware.com/wpimages/2020/02/tunisia-in-pictures-beautiful-places-to-photograph-cape-angela.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src:
+      "https://www.planetware.com/wpimages/2020/02/tunisia-in-pictures-beautiful-places-to-photograph-zaghouan-aqueduct.jpg",
+    thumbnail:
+      "https://www.planetware.com/wpimages/2020/02/tunisia-in-pictures-beautiful-places-to-photograph-zaghouan-aqueduct.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src:
+      "https://carthagemagazine.com/wp-content/uploads/2020/01/Sousse-Tunisia.jpg",
+    thumbnail:
+      "https://carthagemagazine.com/wp-content/uploads/2020/01/Sousse-Tunisia.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src:
+      "https://image.shutterstock.com/image-photo/beautiful-sunset-sousse-tunisia-cityscape-600w-560089576.jpg",
+    thumbnail:
+      "https://image.shutterstock.com/image-photo/beautiful-sunset-sousse-tunisia-cityscape-600w-560089576.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src:
+      "https://p.bookcdn.com/data/Photos/r1536x554/3232/323250/323250406.JPEG",
+    thumbnail:
+      "https://p.bookcdn.com/data/Photos/r1536x554/3232/323250/323250406.JPEG",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src: "https://wallpapercave.com/wp/wp2030665.jpg",
+    thumbnail: "https://wallpapercave.com/wp/wp2030665.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+  {
+    src: "https://wallpapercave.com/wp/wp2030675.jpg",
+    thumbnail: "https://wallpapercave.com/wp/wp2030675.jpg",
+    thumbnailWidth: 3200,
+    thumbnailHeight: 1800,
+    tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
+    caption: "Sfax | Medina",
+  },
+];
+
 const images = {
-  "Sfax 1": [
-    {
-      src:
-        "https://cdn-bodde.nitrocdn.com/PgnkCIsGyOJiNkMdDOHEAiCvMEeINUsu/assets/static/source/rev-93acb20/wp-content/uploads/2014/02/Plage-de-Chaffar-Sfax.jpg",
-      thumbnail:
-        "https://cdn-bodde.nitrocdn.com/PgnkCIsGyOJiNkMdDOHEAiCvMEeINUsu/assets/static/source/rev-93acb20/wp-content/uploads/2014/02/Plage-de-Chaffar-Sfax.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-    {
-      src: "https://thumbs.dreamstime.com/b/sfax-tunisie-55343579.jpg",
-      thumbnail: "https://thumbs.dreamstime.com/b/sfax-tunisie-55343579.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-    {
-      src: "https://thumbs.dreamstime.com/b/sfax-tunisie-55343579.jpg",
-      thumbnail: "https://thumbs.dreamstime.com/b/sfax-tunisie-55343579.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-    {
-      src: "https://thumbs.dreamstime.com/b/la-promenade-de-sfax-63489957.jpg",
-      thumbnail:
-        "https://thumbs.dreamstime.com/b/la-promenade-de-sfax-63489957.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-    {
-      src:
-        "https://thumbs.dreamstime.com/b/la-place-de-r%C3%A9publique-de-sfax-63413147.jpg",
-      thumbnail:
-        "https://thumbs.dreamstime.com/b/la-place-de-r%C3%A9publique-de-sfax-63413147.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-    {
-      src:
-        "https://thumbs.dreamstime.com/b/la-stalle-d-%C3%A9pice-63489450.jpg",
-      thumbnail:
-        "https://thumbs.dreamstime.com/b/la-stalle-d-%C3%A9pice-63489450.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-    {
-      src: "https://thumbs.dreamstime.com/b/la-stalle-de-pain-63489681.jpg",
-      thumbnail:
-        "https://thumbs.dreamstime.com/b/la-stalle-de-pain-63489681.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-    {
-      src:
-        "https://thumbs.dreamstime.com/b/le-boulevard-de-r%C3%A9publique-63413110.jpg",
-      thumbnail:
-        "https://thumbs.dreamstime.com/b/le-boulevard-de-r%C3%A9publique-63413110.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-    {
-      src: "https://thumbs.dreamstime.com/b/sfax-tunisie-55343658.jpg",
-      thumbnail: "https://thumbs.dreamstime.com/b/sfax-tunisie-55343658.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-    {
-      src:
-        "https://thumbs.dreamstime.com/b/l-%C3%A9glise-orthodoxe-grecque-de-sfax-63489973.jpg",
-      thumbnail:
-        "https://thumbs.dreamstime.com/b/l-%C3%A9glise-orthodoxe-grecque-de-sfax-63489973.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-    {
-      src:
-        "https://thumbs.dreamstime.com/b/enseigne-en-bois-de-vintage-avec-l-accueil-des-textes-%C3%A0-sfax-accrocher-sur-une-branche-104076703.jpg",
-      thumbnail:
-        "https://thumbs.dreamstime.com/b/enseigne-en-bois-de-vintage-avec-l-accueil-des-textes-%C3%A0-sfax-accrocher-sur-une-branche-104076703.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-    {
-      src:
-        "https://thumbs.dreamstime.com/b/les-gens-traversent-la-m%C3%A9dina-dans-sfax-tunisie-88043660.jpg",
-      thumbnail:
-        "https://thumbs.dreamstime.com/b/les-gens-traversent-la-m%C3%A9dina-dans-sfax-tunisie-88043660.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-    {
-      src:
-        "https://thumbs.dreamstime.com/b/coucher-du-soleil-de-sidi-mansour-tunisie-62735854.jpg",
-      thumbnail:
-        "https://thumbs.dreamstime.com/b/coucher-du-soleil-de-sidi-mansour-tunisie-62735854.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-  ],
-  "Sfax 2": [
-    {
-      src:
-        "https://cdn-bodde.nitrocdn.com/PgnkCIsGyOJiNkMdDOHEAiCvMEeINUsu/assets/static/source/rev-93acb20/wp-content/uploads/2014/02/Plage-de-Chaffar-Sfax.jpg",
-      thumbnail:
-        "https://cdn-bodde.nitrocdn.com/PgnkCIsGyOJiNkMdDOHEAiCvMEeINUsu/assets/static/source/rev-93acb20/wp-content/uploads/2014/02/Plage-de-Chaffar-Sfax.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-
-    {
-      src: "https://thumbs.dreamstime.com/b/sfax-tunisie-55343579.jpg",
-      thumbnail: "https://thumbs.dreamstime.com/b/sfax-tunisie-55343579.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-    {
-      src: "https://thumbs.dreamstime.com/b/sfax-tunisie-55343579.jpg",
-      thumbnail: "https://thumbs.dreamstime.com/b/sfax-tunisie-55343579.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-    {
-      src: "https://thumbs.dreamstime.com/b/la-promenade-de-sfax-63489957.jpg",
-      thumbnail:
-        "https://thumbs.dreamstime.com/b/la-promenade-de-sfax-63489957.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-    {
-      src:
-        "https://thumbs.dreamstime.com/b/la-place-de-r%C3%A9publique-de-sfax-63413147.jpg",
-      thumbnail:
-        "https://thumbs.dreamstime.com/b/la-place-de-r%C3%A9publique-de-sfax-63413147.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-    {
-      src:
-        "https://thumbs.dreamstime.com/b/la-stalle-d-%C3%A9pice-63489450.jpg",
-      thumbnail:
-        "https://thumbs.dreamstime.com/b/la-stalle-d-%C3%A9pice-63489450.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-    {
-      src: "https://thumbs.dreamstime.com/b/la-stalle-de-pain-63489681.jpg",
-      thumbnail:
-        "https://thumbs.dreamstime.com/b/la-stalle-de-pain-63489681.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-    {
-      src:
-        "https://thumbs.dreamstime.com/b/le-boulevard-de-r%C3%A9publique-63413110.jpg",
-      thumbnail:
-        "https://thumbs.dreamstime.com/b/le-boulevard-de-r%C3%A9publique-63413110.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-    {
-      src: "https://thumbs.dreamstime.com/b/sfax-tunisie-55343658.jpg",
-      thumbnail: "https://thumbs.dreamstime.com/b/sfax-tunisie-55343658.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-    {
-      src:
-        "https://thumbs.dreamstime.com/b/l-%C3%A9glise-orthodoxe-grecque-de-sfax-63489973.jpg",
-      thumbnail:
-        "https://thumbs.dreamstime.com/b/l-%C3%A9glise-orthodoxe-grecque-de-sfax-63489973.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-    {
-      src:
-        "https://thumbs.dreamstime.com/b/enseigne-en-bois-de-vintage-avec-l-accueil-des-textes-%C3%A0-sfax-accrocher-sur-une-branche-104076703.jpg",
-      thumbnail:
-        "https://thumbs.dreamstime.com/b/enseigne-en-bois-de-vintage-avec-l-accueil-des-textes-%C3%A0-sfax-accrocher-sur-une-branche-104076703.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-    {
-      src:
-        "https://thumbs.dreamstime.com/b/les-gens-traversent-la-m%C3%A9dina-dans-sfax-tunisie-88043660.jpg",
-      thumbnail:
-        "https://thumbs.dreamstime.com/b/les-gens-traversent-la-m%C3%A9dina-dans-sfax-tunisie-88043660.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-    {
-      src:
-        "https://thumbs.dreamstime.com/b/coucher-du-soleil-de-sidi-mansour-tunisie-62735854.jpg",
-      thumbnail:
-        "https://thumbs.dreamstime.com/b/coucher-du-soleil-de-sidi-mansour-tunisie-62735854.jpg",
-      thumbnailWidth: 3200,
-      thumbnailHeight: 1800,
-      tags: [{ value: "Nature", title: "Nature | Sea | Sun" }],
-      caption: "Sfax - Sidi Mansour",
-    },
-  ],
-
-  // Sousse //
-
-  Sousse: [
-    {
-      src:
-        "https://lp-cms-production.imgix.net/features/2018/08/sidi-bou-said-harbour-tunisia-27ce685bbaa0.jpg?auto=format&fit=crop&sharp=10&vib=20&ixlib=react-8.6.4&w=850&q=75&dpr=1",
-      thumbnail:
-        "https://lp-cms-production.imgix.net/features/2018/08/sidi-bou-said-harbour-tunisia-27ce685bbaa0.jpg?auto=format&fit=crop&sharp=10&vib=20&ixlib=react-8.6.4&w=850&q=75&dpr=1",
-      thumbnailWidth: 1000,
-      thumbnailHeight: 600,
-      caption:
-        "Public transport is available, but it's easiest to hire a car (or boat!)",
-    },
-    {
-      src:
-        "https://lp-cms-production.imgix.net/features/2018/08/dougga-roman-ruins-tunisia-3821f8a12b0c.jpg?auto=format&fit=crop&sharp=10&vib=20&ixlib=react-8.6.4&w=850&q=75&dpr=1",
-      thumbnail:
-        "https://lp-cms-production.imgix.net/features/2018/08/dougga-roman-ruins-tunisia-3821f8a12b0c.jpg?auto=format&fit=crop&sharp=10&vib=20&ixlib=react-8.6.4&w=850&q=75&dpr=1",
-      thumbnailWidth: 1000,
-      thumbnailHeight: 600,
-      tags: [
-        { value: "People", title: "People" },
-        { value: "Industrial", title: "Industrial" },
-      ],
-      caption: "The sprawling and often empty ruins of Dougga ",
-    },
-    {
-      src:
-        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/4e/e5/e8/marhaba-beach-pool.jpg?w=500&h=400&s=1",
-      thumbnail:
-        "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0e/4e/e5/e8/marhaba-beach-pool.jpg?w=500&h=400&s=1",
-      thumbnailWidth: 1000,
-      thumbnailHeight: 600,
-      tags: [
-        { value: "People", title: "People" },
-        { value: "Industrial", title: "Industrial" },
-      ],
-      caption: "The sprawling and often empty ruins of Dougga ",
-    },
-  ],
-  Monastir: [
-    {
-      src:
-        "https://cdn-bodde.nitrocdn.com/PgnkCIsGyOJiNkMdDOHEAiCvMEeINUsu/assets/static/source/rev-93acb20/wp-content/uploads/2014/02/Chebika-Tunisia.jpg",
-      thumbnail:
-        "https://cdn-bodde.nitrocdn.com/PgnkCIsGyOJiNkMdDOHEAiCvMEeINUsu/assets/static/source/rev-93acb20/wp-content/uploads/2014/02/Chebika-Tunisia.jpg",
-      thumbnailWidth: 1000,
-      thumbnailHeight: 600,
-      caption: "Chebika – an oasis",
-    },
-    {
-      src:
-        "https://cdn-bodde.nitrocdn.com/PgnkCIsGyOJiNkMdDOHEAiCvMEeINUsu/assets/static/optimized/rev-93acb20/wp-content/uploads/2014/02/Hammamet-1.jpg",
-      thumbnail:
-        "https://cdn-bodde.nitrocdn.com/PgnkCIsGyOJiNkMdDOHEAiCvMEeINUsu/assets/static/optimized/rev-93acb20/wp-content/uploads/2014/02/Hammamet-1.jpg",
-      thumbnailWidth: 1000,
-      thumbnailHeight: 600,
-      tags: [{ value: "Nature", title: "Nature | Flowers" }],
-      caption:
-        "Hammamet – a small fishing town turned beautiful coastal resort",
-    },
-  ],
-  "Tunis 1": [
-    {
-      src:
-        "https://cdn-bodde.nitrocdn.com/PgnkCIsGyOJiNkMdDOHEAiCvMEeINUsu/assets/static/source/rev-93acb20/wp-content/uploads/2014/02/Monastir-Ribat.jpg",
-      thumbnail:
-        "https://cdn-bodde.nitrocdn.com/PgnkCIsGyOJiNkMdDOHEAiCvMEeINUsu/assets/static/source/rev-93acb20/wp-content/uploads/2014/02/Monastir-Ribat.jpg",
-      thumbnailWidth: 1000,
-      thumbnailHeight: 600,
-      tags: [{ value: "Nature", title: "Nature | Flowers" }],
-      caption: "Monastir Ribat – immaculately preserved military architecture",
-    },
-    {
-      src:
-        "https://cdn-bodde.nitrocdn.com/PgnkCIsGyOJiNkMdDOHEAiCvMEeINUsu/assets/static/source/rev-93acb20/wp-content/uploads/2014/02/Matmata-1.jpg",
-      thumbnail:
-        "https://cdn-bodde.nitrocdn.com/PgnkCIsGyOJiNkMdDOHEAiCvMEeINUsu/assets/static/source/rev-93acb20/wp-content/uploads/2014/02/Matmata-1.jpg",
-      thumbnailWidth: 1000,
-      thumbnailHeight: 600,
-      tags: [{ value: "Nature", title: "Nature | Flowers" }],
-      caption:
-        "Matmata & the Ksour – a unique desert village with curious honeycomb-like houses",
-    },
-  ],
-  "Tunis 2": [
-    {
-      src:
-        "https://cdn-bodde.nitrocdn.com/PgnkCIsGyOJiNkMdDOHEAiCvMEeINUsu/assets/static/source/rev-93acb20/wp-content/uploads/2014/02/Sousse-1-1536x1014.jpg",
-      thumbnail:
-        "https://cdn-bodde.nitrocdn.com/PgnkCIsGyOJiNkMdDOHEAiCvMEeINUsu/assets/static/source/rev-93acb20/wp-content/uploads/2014/02/Sousse-1-1536x1014.jpg",
-      thumbnailWidth: 1000,
-      thumbnailHeight: 600,
-      tags: [{ value: "Nature", title: "Nature | Flowers" }],
-      caption:
-        "Sousse – a beautiful city otherwise known as “the Pearl of the Sahel”",
-    },
-
-    {
-      src:
-        "https://cdn-bodde.nitrocdn.com/PgnkCIsGyOJiNkMdDOHEAiCvMEeINUsu/assets/static/source/rev-93acb20/wp-content/uploads/2014/02/Plage-de-Chaffar-Sfax.jpg",
-      thumbnail:
-        "https://cdn-bodde.nitrocdn.com/PgnkCIsGyOJiNkMdDOHEAiCvMEeINUsu/assets/static/source/rev-93acb20/wp-content/uploads/2014/02/Plage-de-Chaffar-Sfax.jpg",
-      thumbnailWidth: 1000,
-      thumbnailHeight: 600,
-      tags: [{ value: "Nature", title: "Nature | Flowers" }],
-      caption:
-        "Plage de Chaffar (Sfax) – a Mediterranean sandy beach resort popular with both tourists and locals",
-    },
-  ],
+  "Tunis 1": arrImgs,
+  "Tunis 2": arrImgs,
+  "Sfax 1": arrImgs,
+  "Sfax 2": arrImgs,
+  "Nabeul 1": arrImgs,
+  "Nabeul 2": arrImgs,
+  Sousse: arrImgs,
+  "Ben Arous": arrImgs,
+  Ariana: arrImgs,
+  Kairouan: arrImgs,
+  Bizerte: arrImgs,
+  Monastir: arrImgs,
+  Mednine: arrImgs,
+  Kasserine: arrImgs,
+  "Sidi Bouzid": arrImgs,
+  Mahdia: arrImgs,
+  Jendouba: arrImgs,
+  Manouba: arrImgs,
+  Gabès: arrImgs,
+  Gafsa: arrImgs,
+  Beja: arrImgs,
+  Kef: arrImgs,
+  Siliana: arrImgs,
+  Zaghouan: arrImgs,
+  Kebili: arrImgs,
+  Tataouine: arrImgs,
+  Tozeur: arrImgs,
 };
 
 const captionStyle = {
