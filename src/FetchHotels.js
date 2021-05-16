@@ -88,40 +88,41 @@ class Booking extends React.Component {
             style={{
               position: "realtive",
               left: "5%",
-              width: "900px",
-              height: "240px",
+              width: "700px",
+              height: "150px",
               cursor: "pointer",
             }}
           >
             <Card.Img
               variant="right"
-              style={{ width: "300px", height: "240px" }}
+              style={{ width: "150px", height: "150px" }}
               src={this.handleError(i)==false?'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/1f/e0/a6/exterior-view.jpg?w=1300&h=-1&s=1':this.handleError(i)}
             />
             <Card.Body>
               <Card.Title
                 style={{
                   position: "absolute",
-                  left: "35%",
+                  left: "25%",
                   bottom: "85%",
                   color: "blue",
                 }}
               >
-                {i.result_object.name}
+                {i.result_object.name} -  {this.handleErrorCat(i) == false ? null:this.handleErrorCat(i) }
               </Card.Title>
               <Card.Text
-                style={{ position: "absolute", left: "35%", bottom: "65%" }}
+                style={{ position: "absolute", left: "25%", bottom: "50%" }}
               >
-                {this.handleErrorCat(i) == false ? null:this.handleErrorCat(i) } ||{" "}
-            {i.result_object.num_reviews} || {i.result_object.rating} ||{" "} <Button> View Deal</Button>
+            <div>
             <StarRatingComponent 
+            
           name="rate2" 
           editing={false}
           renderStarIcon={<i style = {{fontSize:'50px'}}className="far fa-star"></i>}
           starCount={5}
           value={i.result_object.rating}
-        />
-      
+        /> 
+        (<p>{i.result_object.num_reviews} reviews</p>)
+          <h6>{i.result_object.address}</h6></div>
               </Card.Text>
             </Card.Body>
           </Card>))}
