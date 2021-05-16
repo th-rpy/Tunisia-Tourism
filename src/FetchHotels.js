@@ -1,17 +1,54 @@
 import React from "react";
 import moment from "moment";
 
-import {
-  Card,
-  CardGroup,
-  Button,
-} from "react-bootstrap";
+import { Card, CardGroup, Button } from "react-bootstrap";
 
 class Booking extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isFetching: false,
+      hotels: [],
+      error: null
+    };
   }
+  componentDidMount() {
+    this.fetchHotelsWithFetchAPI();
+    //this.timer = setInterval(() => this.fetchHotelsWithFetchAPI(), 5000);
+  }
+  handleError (i){
+    try { // statements to try
+      const img = i.result_object.photo.images.medium.url;
+      return img; // function could throw exception
+    }
+    catch (e) {
+      return false
+    }
+  }
+  fetchHotelsWithFetchAPI = () => {
+    this.setState({ ...this.state, isFetching: true });
+    fetch(
+      "https://travel-advisor.p.rapidapi.com/locations/search?query=sfax&limit=30&offset=0&units=km&location_id=1&currency=USD&sort=relevance&lang=en_US",
+      {
+        method: "GET",
+        headers: {
+          "x-rapidapi-key":
+            "80931fe5ddmsh53d7fcecf915bb4p18ea7bjsna3109b19b574",
+          "x-rapidapi-host": "travel-advisor.p.rapidapi.com",
+        },
+      }
+    )
+      .then((response) => response.json())
+      .then((result) => {
+        this.setState({ hotels: result.data, isFetching: false });
+        console.log(result.data);
+      })
+      .catch((e) => {
+        console.log(e);
+        this.setState({ ...this.state, isFetching: false });
+      });
+  };
+
   render() {
     const { location } = this.props;
     return (
@@ -100,6 +137,13 @@ class Booking extends React.Component {
             </Card.Body>
           </Card>
         </CardGroup>
+        {this.state.hotels.map((i) => (
+          <div>
+            {i.result_object.name}|| {i.result_object.name} ||{" "}
+            {i.result_object.num_reviews} || {i.result_object.rating} ||{" "}
+            {this.handleError(i)==false?null:this.handleError(i)}
+          </div>
+        ))}
       </div>
     );
   }
