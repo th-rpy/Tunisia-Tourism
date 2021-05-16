@@ -25,12 +25,14 @@ import {
 } from "@chakra-ui/react";
 import { useDisclosure } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
+import NavBar from "./NavBar";
 
 function Visitme(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [Guests, setGuests] = useState(1);
   const [Rooms, setRooms] = useState(1);
+  const [gov, setGov] = useState(props.dataState)
 
   //handle Rooms number changes
   const handleRooms = (room) => {
@@ -62,15 +64,16 @@ function Visitme(props) {
 
   return (
     <ChakraProvider>
+        <NavBar></NavBar>
       <Text
-        style={{ position: "absolute", bottom: "95%", right: "46%" }}
+        style={{ position: "absolute", bottom: "90%", right: "46%" }}
         fontSize="20px"
         color="gray.800"
         isTruncated
       >
         <strong>
           {" "}
-          I <span style={{ color: "red" }}> ❤ </span> {props.dataState}{" "}
+          I <span style={{ color: "red" }}> ❤ </span> {props.dataState.replace(/[0-9]/g, '')}{" "}
         </strong>
       </Text>{" "}
       <Link to="/">
@@ -79,7 +82,7 @@ function Visitme(props) {
           ref={finalRef}
           colorScheme="teal"
           variant="solid"
-          style={{ position: "absolute", bottom: "95%", right: "54%" }}
+          style={{ position: "absolute", bottom: "90%", right: "54%" }}
         >
           Back To Map
         </Button>
@@ -87,7 +90,7 @@ function Visitme(props) {
       <Button
         colorScheme="teal"
         variant="solid"
-        style={{ position: "absolute", bottom: "95%", right: "36%" }}
+        style={{ position: "absolute", bottom: "90%", right: "36%" }}
         onClick={onOpen}
       >
         Book Hotels
@@ -174,7 +177,7 @@ function Visitme(props) {
             <Link
               to={{
                 pathname: "/booking",
-                state: { checkInDate, checkOutDate, Guests, Rooms },
+                state: { checkInDate, checkOutDate, Guests, Rooms, gov },
               }}
             >
               <Button colorScheme="blue" mr={3}>
