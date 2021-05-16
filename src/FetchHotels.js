@@ -1,7 +1,7 @@
 import React from "react";
 import moment from "moment";
 
-import { Card, CardGroup, Button } from "react-bootstrap";
+import { Card, CardGroup, Button, Form } from "react-bootstrap";
 import Rating from "@material-ui/lab/Rating";
 import NavBar from "./NavBar";
 import { Header } from "semantic-ui-react";
@@ -11,12 +11,33 @@ class Booking extends React.Component {
     super(props);
     this.state = {
       isFetching: false,
+      data: [],
       hotels: [],
+      restos: [],
+      places:[],
       error: null,
     };
   }
   componentDidMount() {
+    const h = [...this.state.hotels]
+    const r = [...this.state.restos]
+    const p = [...this.state.places]
     this.fetchHotelsWithFetchAPI();
+    this.state.data.map(i =>{
+      if (i.result_object.category.name == 'Hotels'){
+        h.push(i)
+        
+      }
+      if (i.result_object.category.name == 'Restaurants'){
+        r.push(i)
+      }
+      if (i.result_object.category.name != 'Hotels' && i.result_object.category != 'Restaurants'){
+        p.push(i)
+      }
+    })
+    this.setState({hotels: h})
+    this.setState({restaurants: r})
+    this.setState({place: p})
     //this.timer = setInterval(() => this.fetchHotelsWithFetchAPI(), 5000);
   }
   handleError(i) {
@@ -53,7 +74,7 @@ class Booking extends React.Component {
     })
       .then((response) => response.json())
       .then((result) => {
-        this.setState({ hotels: result.data, isFetching: false });
+        this.setState({ data: result.data, isFetching: false });
         console.log(result.data);
       })
       .catch((e) => {
@@ -72,22 +93,30 @@ class Booking extends React.Component {
           {moment(location.state.checkInDate).format("LL")} to{" "}
           {moment(location.state.checkOutDate).format("LL")} for{" "}
           {location.state.Guests} guests in {location.state.Rooms} rooms.
+          
         </Header>
-
+        You can choose : {['Hotels:15%', 'Restaurants:50%', 'Places:85%'].map(i =>(<div style={{
+            display: "flex",
+            flexDirection: "column",
+            position: "absolute",
+            left: i.split(":")[1],
+            top: '25%'
+          }}><Button>{i.split(":")[0]}</Button></div>)) }
         <CardGroup
           style={{
             display: "flex",
             flexDirection: "column",
-            position: "relative",
-            left: "15%",
+            position: "absolute",
+            left: "0%",
+            top: '30%'
           }}
         >
-          {this.state.hotels.map((i) => (
+          {this.state.data.map((i) => (
             <Card
               style={{
                 position: "relative",
                 left: "5%",
-                width: "700px",
+                width: "500px",
                 height: "180px",
                 cursor: "pointer",
               }}
@@ -105,9 +134,10 @@ class Booking extends React.Component {
                 <Card.Title
                   style={{
                     position: "absolute",
-                    left: "22%",
+                    left: "32%",
                     bottom: "80%",
                     color: "blue",
+                    fontSize:"18px"
                   }}
                 >
                   {i.result_object.name} -{" "}
@@ -116,7 +146,7 @@ class Booking extends React.Component {
                     : this.handleErrorCat(i)}
                 </Card.Title>
                 <Card.Text
-                  style={{ position: "absolute", left: "25%", bottom: "40%" }}
+                  style={{ position: "absolute", left: "33%", bottom: "40%" }}
                 ></Card.Text>
                 <div
                   style={{
@@ -132,7 +162,7 @@ class Booking extends React.Component {
                   <p
                     style={{
                       position: "absolute",
-                      left: "40%",
+                      left: "55%",
                       bottom: "55%",
                     }}
                   >
@@ -142,7 +172,7 @@ class Booking extends React.Component {
                   <Rating
                     style={{
                       position: "absolute",
-                      left: "22%",
+                      left: "32%",
                       bottom: "55%",
                     }}
                     value={i.result_object.rating}
@@ -155,7 +185,7 @@ class Booking extends React.Component {
                 <Button
                   style={{
                     position: "absolute",
-                    left: "22%",
+                    left: "32%",
                     bottom: "25%",
                   }}
                 >
@@ -171,12 +201,12 @@ class Booking extends React.Component {
                   bottom: "1%",
                 }}
               >
-                <large className="text-muted">
+                <small className="text-muted">
                   <strong>Address 💌 : </strong>{" "}
                   {i.result_object.address == undefined
                     ? location.state.gov.replace(/[0-9]/g, "")+' -Tunisia'
                     : i.result_object.address}
-                </large>
+                </small>
               </Card.Footer>
             </Card>
           ))}
