@@ -81,7 +81,7 @@ class Booking extends React.Component {
       <div className="summary">
         <NavBar></NavBar>
         <Header as="h5" style={{ position: "relative", left: "23%" }}>
-          You book a hotel from{" "}
+          Places to visit in {location.state.gov} from{" "}
           {moment(location.state.checkInDate).format("LL")} to{" "}
           {moment(location.state.checkOutDate).format("LL")} for{" "}
           {location.state.Guests} guests in {location.state.Rooms} rooms.
