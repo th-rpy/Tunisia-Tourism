@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React from "react";
 import moment from "moment";
 
@@ -13,33 +14,16 @@ class Booking extends React.Component {
       isFetching: false,
       data: [],
       hotels: [],
-      restos: [],
       places:[],
+      arr: ['Hotels:20%', 'Restaurants & Places:72%'],
       error: null,
     };
   }
   componentDidMount() {
-    const h = [...this.state.hotels]
-    const r = [...this.state.restos]
-    const p = [...this.state.places]
+
     this.fetchHotelsWithFetchAPI();
-    this.state.data.map(i =>{
-      if (i.result_object.category.name == 'Hotels'){
-        h.push(i)
-        
-      }
-      if (i.result_object.category.name == 'Restaurants'){
-        r.push(i)
-      }
-      if (i.result_object.category.name != 'Hotels' && i.result_object.category != 'Restaurants'){
-        p.push(i)
-      }
-    })
-    this.setState({hotels: h})
-    this.setState({restaurants: r})
-    this.setState({place: p})
-    //this.timer = setInterval(() => this.fetchHotelsWithFetchAPI(), 5000);
   }
+
   handleError(i) {
     try {
       // statements to try
@@ -66,10 +50,10 @@ class Booking extends React.Component {
       location.state.gov.replace(/[0-9]/g, "") +
       "&limit=30&offset=0&units=km&location_id=1&currency=USD&sort=relevance&lang=en_US";
     fetch(url, {
-      method: "GET",
-      headers: {
-        "x-rapidapi-key": "80931fe5ddmsh53d7fcecf915bb4p18ea7bjsna3109b19b574",
-        "x-rapidapi-host": "travel-advisor.p.rapidapi.com",
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-key": "01f0719166mshaa22357b3c03f5bp195790jsnd4fcb6a1277b",
+        "x-rapidapi-host": "travel-advisor.p.rapidapi.com"
       },
     })
       .then((response) => response.json())
@@ -85,6 +69,16 @@ class Booking extends React.Component {
 
   render() {
     const { location } = this.props;
+    const hotels = []
+    const places = []
+    this.state.data.map(i =>{
+      if (i.result_object.category.name == 'Hotel'){
+        hotels.push(i)
+      }
+      else {
+        places.push(i)
+      }
+    })
     return (
       <div className="summary">
         <NavBar></NavBar>
@@ -95,7 +89,7 @@ class Booking extends React.Component {
           {location.state.Guests} guests in {location.state.Rooms} rooms.
           
         </Header>
-        You can choose : {['Hotels:15%', 'Restaurants:50%', 'Places:85%'].map(i =>(<div style={{
+        {this.state.arr.map(i =>(<div style={{
             display: "flex",
             flexDirection: "column",
             position: "absolute",
@@ -111,12 +105,12 @@ class Booking extends React.Component {
             top: '30%'
           }}
         >
-          {this.state.data.map((i) => (
+          {hotels.map((i) => (
             <Card
               style={{
                 position: "relative",
                 left: "5%",
-                width: "500px",
+                width: "600px",
                 height: "180px",
                 cursor: "pointer",
               }}
@@ -135,9 +129,119 @@ class Booking extends React.Component {
                   style={{
                     position: "absolute",
                     left: "32%",
-                    bottom: "80%",
+                    bottom: "79%",
                     color: "blue",
-                    fontSize:"18px"
+                    fontSize:"17px"
+                  }}
+                >
+                  {i.result_object.name} -{" "}
+                  {this.handleErrorCat(i) == false
+                    ? null
+                    : this.handleErrorCat(i)}
+                </Card.Title>
+                <Card.Text
+                  style={{ position: "absolute", left: "33%", bottom: "40%" }}
+                ></Card.Text>
+                <div
+                  style={{
+                    fontFamily:
+                      '"Trip Sans VF", "Trip Sans", Arial, sans-serif',
+                    fontSize: "16px",
+                    fontStyle: "normal",
+                    fontVariant: "normal",
+                    fontWeight: "400",
+                  }}
+                >
+                  <br></br>
+                  <p
+                    style={{
+                      position: "absolute",
+                      left: "55%",
+                      bottom: "55%",
+                    }}
+                  >
+                    {" "}
+                    🙋‍♂️ {i.result_object.num_reviews + " reviews"}
+                  </p>
+                  <Rating
+                    style={{
+                      position: "absolute",
+                      left: "32%",
+                      bottom: "55%",
+                    }}
+                    value={i.result_object.rating}
+                    name="half-rating-read"
+                    defaultValue={2.5}
+                    precision={0.2}
+                    readOnly
+                  />
+                </div>
+                <Button
+                  style={{
+                    position: "absolute",
+                    left: "32%",
+                    bottom: "25%",
+                  }}
+                >
+                  {" "}
+                  View Deal
+                </Button>
+              </Card.Body>
+
+              <Card.Footer
+                style={{
+                  position: "absolute",
+                  left: "0%",
+                  bottom: "1%",
+                }}
+              >
+                <small className="text-muted">
+                  <strong>Address 💌 : </strong>{" "}
+                  {i.result_object.address == undefined
+                    ? location.state.gov.replace(/[0-9]/g, "")+' -Tunisia'
+                    : i.result_object.address}
+                </small>
+              </Card.Footer>
+            </Card>
+          ))}
+        </CardGroup>
+    
+        <CardGroup
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            position: "absolute",
+            left: "57%",
+            top: '30%'
+          }}
+        >
+          {places.map((i) => (
+            <Card
+              style={{
+                position: "relative",
+                left: "5%",
+                width: "600px",
+                height: "180px",
+                cursor: "pointer",
+              }}
+            >
+              <Card.Img
+                variant="right"
+                style={{ width: "150px", height: "150px" }}
+                src={
+                  this.handleError(i) == false
+                    ? "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/16/1f/e0/a6/exterior-view.jpg?w=1300&h=-1&s=1"
+                    : this.handleError(i)
+                }
+              />
+              <Card.Body>
+                <Card.Title
+                  style={{
+                    position: "absolute",
+                    left: "32%",
+                    bottom: "79%",
+                    color: "blue",
+                    fontSize:"17px"
                   }}
                 >
                   {i.result_object.name} -{" "}
