@@ -14,13 +14,12 @@ class Booking extends React.Component {
       isFetching: false,
       data: [],
       hotels: [],
-      places:[],
-      arr: ['Hotels:20%', 'Restaurants & Places:72%'],
+      places: [],
+      arr: ["Hotels:20%", "Restaurants & Places:72%"],
       error: null,
     };
   }
   componentDidMount() {
-
     this.fetchHotelsWithFetchAPI();
   }
 
@@ -50,10 +49,10 @@ class Booking extends React.Component {
       location.state.gov.replace(/[0-9]/g, "") +
       "&limit=30&offset=0&units=km&location_id=1&currency=USD&sort=relevance&lang=en_US";
     fetch(url, {
-      "method": "GET",
-      "headers": {
+      method: "GET",
+      headers: {
         "x-rapidapi-key": "01f0719166mshaa22357b3c03f5bp195790jsnd4fcb6a1277b",
-        "x-rapidapi-host": "travel-advisor.p.rapidapi.com"
+        "x-rapidapi-host": "travel-advisor.p.rapidapi.com",
       },
     })
       .then((response) => response.json())
@@ -69,40 +68,44 @@ class Booking extends React.Component {
 
   render() {
     const { location } = this.props;
-    const hotels = []
-    const places = []
-    this.state.data.map(i =>{
-      if (i.result_object.category.name == 'Hotel'){
-        hotels.push(i)
+    const hotels = [];
+    const places = [];
+    this.state.data.map((i) => {
+      if (i.result_object.category.name == "Hotel") {
+        hotels.push(i);
+      } else {
+        places.push(i);
       }
-      else {
-        places.push(i)
-      }
-    })
+    });
     return (
       <div className="summary">
         <NavBar></NavBar>
-        <Header as="h5">
+        <Header as="h5" style={{ position: "relative", left: "23%" }}>
           You book a hotel from{" "}
           {moment(location.state.checkInDate).format("LL")} to{" "}
           {moment(location.state.checkOutDate).format("LL")} for{" "}
           {location.state.Guests} guests in {location.state.Rooms} rooms.
-          
         </Header>
-        {this.state.arr.map(i =>(<div style={{
-            display: "flex",
-            flexDirection: "column",
-            position: "absolute",
-            left: i.split(":")[1],
-            top: '25%'
-          }}><Button>{i.split(":")[0]}</Button></div>)) }
+        {this.state.arr.map((i) => (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              position: "absolute",
+              left: i.split(":")[1],
+              top: "20%",
+            }}
+          >
+            <Button>{i.split(":")[0]}</Button>
+          </div>
+        ))}
         <CardGroup
           style={{
             display: "flex",
             flexDirection: "column",
             position: "absolute",
             left: "0%",
-            top: '30%'
+            top: "30%",
           }}
         >
           {hotels.map((i) => (
@@ -128,10 +131,10 @@ class Booking extends React.Component {
                 <Card.Title
                   style={{
                     position: "absolute",
-                    left: "32%",
+                    left: "28%",
                     bottom: "79%",
                     color: "blue",
-                    fontSize:"17px"
+                    fontSize: "16px",
                   }}
                 >
                   {i.result_object.name} -{" "}
@@ -156,7 +159,7 @@ class Booking extends React.Component {
                   <p
                     style={{
                       position: "absolute",
-                      left: "55%",
+                      left: "52%",
                       bottom: "55%",
                     }}
                   >
@@ -166,7 +169,7 @@ class Booking extends React.Component {
                   <Rating
                     style={{
                       position: "absolute",
-                      left: "32%",
+                      left: "28%",
                       bottom: "55%",
                     }}
                     value={i.result_object.rating}
@@ -179,7 +182,7 @@ class Booking extends React.Component {
                 <Button
                   style={{
                     position: "absolute",
-                    left: "32%",
+                    left: "28%",
                     bottom: "25%",
                   }}
                 >
@@ -198,21 +201,21 @@ class Booking extends React.Component {
                 <small className="text-muted">
                   <strong>Address 💌 : </strong>{" "}
                   {i.result_object.address == undefined
-                    ? location.state.gov.replace(/[0-9]/g, "")+' -Tunisia'
+                    ? location.state.gov.replace(/[0-9]/g, "") + " -Tunisia"
                     : i.result_object.address}
                 </small>
               </Card.Footer>
             </Card>
           ))}
         </CardGroup>
-    
+
         <CardGroup
           style={{
             display: "flex",
             flexDirection: "column",
             position: "absolute",
             left: "57%",
-            top: '30%'
+            top: "30%",
           }}
         >
           {places.map((i) => (
@@ -238,10 +241,10 @@ class Booking extends React.Component {
                 <Card.Title
                   style={{
                     position: "absolute",
-                    left: "32%",
-                    bottom: "79%",
+                    left: "28%",
+                    bottom: "76%",
                     color: "blue",
-                    fontSize:"17px"
+                    fontSize: "16px",
                   }}
                 >
                   {i.result_object.name} -{" "}
@@ -266,7 +269,7 @@ class Booking extends React.Component {
                   <p
                     style={{
                       position: "absolute",
-                      left: "55%",
+                      left: "52%",
                       bottom: "55%",
                     }}
                   >
@@ -276,7 +279,7 @@ class Booking extends React.Component {
                   <Rating
                     style={{
                       position: "absolute",
-                      left: "32%",
+                      left: "28%",
                       bottom: "55%",
                     }}
                     value={i.result_object.rating}
@@ -289,7 +292,7 @@ class Booking extends React.Component {
                 <Button
                   style={{
                     position: "absolute",
-                    left: "32%",
+                    left: "28%",
                     bottom: "25%",
                   }}
                 >
@@ -308,7 +311,7 @@ class Booking extends React.Component {
                 <small className="text-muted">
                   <strong>Address 💌 : </strong>{" "}
                   {i.result_object.address == undefined
-                    ? location.state.gov.replace(/[0-9]/g, "")+' -Tunisia'
+                    ? location.state.gov.replace(/[0-9]/g, "") + " -Tunisia"
                     : i.result_object.address}
                 </small>
               </Card.Footer>
