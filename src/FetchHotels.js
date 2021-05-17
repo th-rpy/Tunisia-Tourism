@@ -82,7 +82,7 @@ class Booking extends React.Component {
     return (
       <div className="summary">
         <NavBar></NavBar>
-        <Header as="h5">
+        <Header as="h5" style = {{position:"relative",left:"23%"}}>
           You book a hotel from{" "}
           {moment(location.state.checkInDate).format("LL")} to{" "}
           {moment(location.state.checkOutDate).format("LL")} for{" "}
@@ -94,7 +94,7 @@ class Booking extends React.Component {
             flexDirection: "column",
             position: "absolute",
             left: i.split(":")[1],
-            top: '25%'
+            top: '20%'
           }}><Button>{i.split(":")[0]}</Button></div>)) }
         <CardGroup
           style={{
@@ -128,10 +128,10 @@ class Booking extends React.Component {
                 <Card.Title
                   style={{
                     position: "absolute",
-                    left: "32%",
+                    left: "28%",
                     bottom: "79%",
                     color: "blue",
-                    fontSize:"17px"
+                    fontSize:"16px"
                   }}
                 >
                   {i.result_object.name} -{" "}
@@ -156,7 +156,7 @@ class Booking extends React.Component {
                   <p
                     style={{
                       position: "absolute",
-                      left: "55%",
+                      left: "52%",
                       bottom: "55%",
                     }}
                   >
@@ -166,7 +166,7 @@ class Booking extends React.Component {
                   <Rating
                     style={{
                       position: "absolute",
-                      left: "32%",
+                      left: "28%",
                       bottom: "55%",
                     }}
                     value={i.result_object.rating}
@@ -179,7 +179,7 @@ class Booking extends React.Component {
                 <Button
                   style={{
                     position: "absolute",
-                    left: "32%",
+                    left: "28%",
                     bottom: "25%",
                   }}
                 >
@@ -238,10 +238,10 @@ class Booking extends React.Component {
                 <Card.Title
                   style={{
                     position: "absolute",
-                    left: "32%",
-                    bottom: "79%",
+                    left: "28%",
+                    bottom: "76%",
                     color: "blue",
-                    fontSize:"17px"
+                    fontSize:"16px"
                   }}
                 >
                   {i.result_object.name} -{" "}
@@ -266,7 +266,7 @@ class Booking extends React.Component {
                   <p
                     style={{
                       position: "absolute",
-                      left: "55%",
+                      left: "52%",
                       bottom: "55%",
                     }}
                   >
@@ -276,7 +276,7 @@ class Booking extends React.Component {
                   <Rating
                     style={{
                       position: "absolute",
-                      left: "32%",
+                      left: "28%",
                       bottom: "55%",
                     }}
                     value={i.result_object.rating}
@@ -289,7 +289,7 @@ class Booking extends React.Component {
                 <Button
                   style={{
                     position: "absolute",
-                    left: "32%",
+                    left: "28%",
                     bottom: "25%",
                   }}
                 >
