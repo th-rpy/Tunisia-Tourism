@@ -24,6 +24,7 @@ export default class Map extends React.Component {
       y: 0,
       tooltipStyle: {
         display: "none",
+
       },
 
       dataState: "",
@@ -146,12 +147,13 @@ export default class Map extends React.Component {
           border="0"
           alt="animated-tunisia-flag-image-0012"
         />
-
-        <div
+        <article
+          className="examples__block"
+          onMouseMove={this._onMouseMove}
           style={{
-            width: "350px",
-            height: "150px",
-            color: "black",
+            width: "300px",
+            height: "100px",
+            color: "white",
             align: "center",
             padding: "0em",
             display: "inline-block",
@@ -159,30 +161,7 @@ export default class Map extends React.Component {
             position: "absolute",
 
             zIndex: "50",
-            top: "102%",
-            right: "38%",
-            margin: "-100px 0 0 -150px",
-          }}
-        >
-          {" "}
-          <Footer></Footer>{" "}
-        </div>
-
-        <article
-          className="examples__block"
-          onMouseMove={this._onMouseMove}
-          style={{
-            width: "300px",
-            height: "300px",
-            color: "white",
-            align: "center",
-            padding: "1em",
-            display: "inline-block",
-            textDecoration: "none !important",
-            position: "absolute",
-
-            zIndex: "50",
-            top: "15%",
+            top: "13%",
             left: "50%",
             margin: "-100px 0 0 -150px",
           }}
@@ -191,15 +170,16 @@ export default class Map extends React.Component {
 
           <Heading
             mb={4}
-            as="h4"
+            as="h1"
             style={{
               color: "black",
               height: "5px",
               textAlign: "center",
-              fontSize: "21px",
+              fontSize: "30px",
+              width: "100%",
             }}
           >
-            <strong>Tunisia SVG Interactive Map</strong>
+            
           </Heading>
           <br />
           <div className="examples__block__info">
@@ -215,7 +195,7 @@ export default class Map extends React.Component {
               ) : null}
             </div>
           </div>
-          <div className="examples__block__map examples__block__map--australia">
+          <div className="examples__block__map examples__block__map--tunisia">
             <SVGMap
               map={Tunisia}
               onLocationMouseOver={this.handleLocationMouseOver}
@@ -229,7 +209,7 @@ export default class Map extends React.Component {
         </article>
         <div>
           {this.state.modal ? (
-            <Modal isOpen={this.state.modal}>
+            <Modal isOpen={this.state.modal} style = {{overflow :'hidden'}}>
               <ModalHeader
                 style={{ size: "28px", color: "green", width: "100%" }}
               >
@@ -246,7 +226,7 @@ export default class Map extends React.Component {
                 <img
                   src="https://assets.wego.com/image/upload/v1611848131/country-pages/tn.jpg"
                   alt="cfrfrfr"
-                  style={{ width: "700px", height: "275px" }}
+                  style={{ width: "700px", height: "260px" }}
                 />
                 <br></br>
                 <strong>Woohoo, you're reading to visit us</strong>
@@ -272,6 +252,26 @@ export default class Map extends React.Component {
               </ModalFooter>
             </Modal>
           ) : null}
+        </div>
+        <div
+          style={{
+            width: "350px",
+            height: "150px",
+            color: "black",
+            align: "center",
+            padding: "0em",
+            display: "inline-block",
+            textDecoration: "none !important",
+            position: "absolute",
+
+            zIndex: "50",
+            top: "100%",
+            right: "0%",
+            margin: "-100px 0 0 -150px",
+          }}
+        >
+          {" "}
+          <Footer></Footer>{" "}
         </div>
       </div>
     );

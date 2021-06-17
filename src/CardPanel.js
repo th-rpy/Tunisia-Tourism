@@ -11,7 +11,7 @@ class CardPanel extends React.Component {
   }
   render() {
     return (
-      <div className="card">
+      <div className="card" style={{zIndex: '100'}}>
         <header className="card-header">
           <span className="card-header-title">
             <i className="material-icons">place</i>{" "}
